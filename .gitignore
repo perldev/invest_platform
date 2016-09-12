@@ -1,0 +1,10 @@
+.svn
+.idea
+.idea/workspace.xml
+.pyc
+*pyc
+*py~
+*~
+*log
+*orig
+*swp
