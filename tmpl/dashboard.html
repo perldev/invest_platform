@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <style>
+
+    body {
+  padding-top: 50px;
+}
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+
+</style>
+</head>
+<body>
+
+
+
+<div class="modal fade" id="login_action" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<form>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Sign in</h4>
+      </div>
+      <div class="modal-body">
+          <div class="form-group">
+            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox"> Remember me
+            </label>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Sign In</button>
+      </div>
+    </div>
+  </div>
+ </form>
+</div>
+
+
+
+
+
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">For investors:</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Investments</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#login_action"  data-toggle="modal" data-target="#login_action">Sign In</a></li>
+
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+ <div class="container">
+
+      <div class="starter-template">
+          <div class="row">
+              <div class="col-md-12">
+                        <!-- Standard button -->
+                        <button type="button" class="btn btn-default">Your Balance: 1000 lari</button>
+
+                        <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+                        <button type="button" class="btn btn-primary">Dashboard of lots</button>
+
+                        <!-- Contextual button for informational alert messages -->
+                        <button type="button" class="btn btn-info">Transaction</button>
+
+                        <!-- Indicates caution should be taken with this action -->
+                        <button type="button" class="btn btn-info">Payin/Withdraw</button>
+              </div>
+         </div>
+        <div class="row">
+             <div class="col-md-12">
+                       <div class="col-md-3">
+                            <div class="list-group  pull-left"><h2>Credits to buy</h2>
+                                <a href="#" class="list-group-item ">Lot A <span class="badge">1</span><button type="button" class="btn btn-success">Buy</button></a>
+                              <a href="#" class="list-group-item ">Lot B <span class="badge">13</span><button type="button" class="btn btn-success">Buy</button></a>
+                              <a href="#" class="list-group-item ">Lot C <span class="badge">14</span><button type="button" class="btn btn-success">Buy</button></a>
+                              <a href="#" class="list-group-item ">Lot D <span class="badge">11</span><button type="button" class="btn btn-success">Buy</button></a>
+                              <a href="#" class="list-group-item list-group-item-success">Total on amount <span class="badge">11 000</span></a>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div id="container" style="min-width: 310px; height: 400px; max-width: 800px; margin: 0 auto"></div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="list-group  pull-left">
+                              <h2> Your credits:</h2>
+                              <a href="#" class="list-group-item ">Lot A <span class="badge">1</span><button type="button" class="btn btn-info">Info</button></a>
+                              <a href="#" class="list-group-item ">Lot B <span class="badge">13</span><button type="button" class="btn btn-info">Info</button></a>
+                              <a href="#" class="list-group-item ">Lot C <span class="badge">14</span><button type="button" class="btn btn-info">Info</button></a>
+                              <a href="#" class="list-group-item ">Lot D <span class="badge">11</span><button type="button" class="btn btn-info">Info</button></a>
+                              <a href="#" class="list-group-item list-group-item-success">Total on amount <span class="badge">11 000</span></a>
+                            </div>
+                        </div>
+             </div>
+
+        </div>
+
+
+
+
+
+      </div>
+
+    </div><!-- /.container -->
+<script>
+$(function () {
+    $('#container').highcharts({
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Your cashflow:'
+        },
+        subtitle: {
+            text: 'Source: WorldClimate.com'
+        },
+        xAxis: {
+            categories: [
+                'Jan',
+                'Feb',
+                'Mar',
+                'Apr',
+                'May',
+                'Jun',
+                'Jul',
+                'Aug',
+                'Sep',
+                'Oct',
+                'Nov',
+                'Dec'
+            ],
+            crosshair: true
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Rainfall (mm)'
+            }
+        },
+        tooltip: {
+            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+            footerFormat: '</table>',
+            shared: true,
+            useHTML: true
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [{
+            name: 'Tokyo',
+            data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
+
+        }, {
+            name: 'New York',
+            data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5, 106.6, 92.3]
+
+        }, {
+            name: 'London',
+            data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6, 52.4, 65.2, 59.3, 51.2]
+
+        }, {
+            name: 'Berlin',
+            data: [42.4, 33.2, 34.5, 39.7, 52.6, 75.5, 57.4, 60.4, 47.6, 39.1, 46.8, 51.1]
+
+        }]
+    });
+});
+</script>
+</body>
+</html>

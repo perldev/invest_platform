@@ -25,6 +25,9 @@ SECRET_KEY = '$v7-la=pobfja&9g&^i)e=o07-4oo5x7e!3w2c1-qci32bage2'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+BANK_ACCOUNT = 1
+INVESTMENT_ACCOUNT = 2
+PERCENT_ACCOUNT = 3
 
 ALLOWED_HOSTS = []
 

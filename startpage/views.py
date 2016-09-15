@@ -4,15 +4,51 @@ from django.shortcuts import render
 
 from django.shortcuts import render
 # Create your views here.
+from .models import buy_lot
+
 from django.shortcuts import render_to_response, get_object_or_404
-from django.conf import settings
 from django.http import HttpResponse, HttpResponseBadRequest
-from django.core.files.uploadedfile import UploadedFile
 from django.template import RequestContext
 
 
 from django.contrib.auth.models import User, Group
 from django.contrib.auth.decorators import login_required, permission_required
+
+def ok_json(request):
+    pass
+
+
+def error_json(request):
+    pass
+
+@login_required
+def buy_lot(request, lot_type):
+    try:
+        buy_lot(lot_type, request.user)
+        return ok_json(request)
+    except :
+        return error_json(request)
+
+
+def transactions(request):
+    return render(request, 'trans.html',
+                  content_type='text/html')
+
+
+def dashboard(request):
+    return render(request, 'dashboard.html',
+                  content_type='text/html')
+
+
+def registration(request):
+    return render(request, 'registration.html',
+                  content_type='text/html')
+
+
+def msg(request):
+    return render(request, 'msg.html',
+                  content_type='text/html')
+
 
 def index(request):
     return render(request, 'index.html',

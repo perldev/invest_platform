@@ -27,38 +27,103 @@
 
 </head>
 <body>
-<nav class="navbar navbar-inverse navbar-fixed-top">
+
+
+
+<div class="modal fade" id="login_action" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<form>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Sign in</h4>
+      </div>
+      <div class="modal-body">
+          <div class="form-group">
+            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox"> Remember me
+            </label>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Sign In</button>
+      </div>
+    </div>
+  </div>
+ </form>
+</div>
+
+
+
+
+
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed"
-                  data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Sign In</span>
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">For investors:</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Investment Platform</a>
+          <a class="navbar-brand" href="#">Investments</a>
         </div>
-        <div id="navbar" class="collapse navbar-collapse">
+        <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
+            <li><a href="#login_action"  data-toggle="modal" data-target="#login_action">Sign In</a></li>
+
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
+
  <div class="container">
 
       <div class="starter-template">
-        <h1>Here you are able to earn money</h1>
+
+        <div class="col-md-3 pull-left">
+            <h3 class="text-left">Today got:</h3>
+            <p class="text-left"> <span class="glyphicon glyphicon-user">Bogdan</span>, got <strong>100</strong> lari for <strong>7</strong> credits</p>
+            <p class="text-left"> <span class="glyphicon glyphicon-user">Sosedka</span>, got <strong>4 000</strong> lari for <strong>4</strong> credits</p>
+            <p class="text-left"> <span class="glyphicon glyphicon-user">Marina</span>, got <strong>3 153</strong> lari for <strong>9</strong> credits</p>
+            <p class="text-left"> <span class="glyphicon glyphicon-user">Bogdan</span>, got <strong>1 600</strong> lari for <strong>10</strong> credits</p>
+           <p class="text-left"> <span class="glyphicon glyphicon-user">Bogdan</span>, got <strong>1 100</strong> lari for <strong>7</strong> credits</p>
+
+        </div>
+        <div class="col-md-3 pull-right">
+
+            <h3 class="text-left">Today buy:</h3>
+            <p class="text-left"> <span class="glyphicon glyphicon-user">Bogdan</span>, buyed <strong>7</strong> credits on amount of <strong>100</strong> lari</p>
+            <p class="text-left"> <span class="glyphicon glyphicon-user">Sosedka</span>, buyed <strong>4</strong> credits on amount of <strong>4 000</strong> lari</p>
+            <p class="text-left"> <span class="glyphicon glyphicon-user">Marina</span>, buyed <strong>9</strong> credits on amount of <strong>3 153</strong> lari</p>
+            <p class="text-left"> <span class="glyphicon glyphicon-user">Bogdan</span>, buyed <strong>10</strong> credits on amount of <strong>1 600</strong> lari</p>
+            <p class="text-left"> <span class="glyphicon glyphicon-user">Bogdan</span>, buyed <strong>7</strong> credits on amount of <strong>1 100</strong> lari</p>
+        </div>
+
+        <div class="col-md-6">
+            <h1>Here you are able to earn money</h1>
+
+
             <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+        </div>
+
+
+
+
       </div>
 
     </div><!-- /.container -->
-
-
-
 <script>
     $(function () {
     $('#container').highcharts({
