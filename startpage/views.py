@@ -14,6 +14,13 @@ from django.template import RequestContext
 from django.contrib.auth.models import User, Group
 from django.contrib.auth.decorators import login_required, permission_required
 
+
+
+
+
+
+
+
 def ok_json(request):
     pass
 
@@ -21,13 +28,6 @@ def ok_json(request):
 def error_json(request):
     pass
 
-@login_required
-def buy_lot(request, lot_type):
-    try:
-        buy_lot(lot_type, request.user)
-        return ok_json(request)
-    except :
-        return error_json(request)
 
 
 def transactions(request):

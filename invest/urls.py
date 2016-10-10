@@ -18,8 +18,31 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from django.conf import settings
 from django.views.static import serve
+from api.views import LotsToBuy, MyLots
+
+
+
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework.reverse import reverse
+from django.contrib.auth.views import login
+from django.contrib.auth.views import logout
+
+
+@api_view(['GET'])
+def api_root(request, format=None):
+    """
+    The entry endpoint of our API.
+    """
+    return Response({
+        'lots': reverse('lots-list', request=request),
+        "work_flow": reverse("work_flow", request=request)
+    })
 
 urlpatterns = [
+    url(r'^api/$', api_root),
+    url(r'^api/lots$', LotsToBuy.as_view(), name='lots'),
+    url(r'^api/my_lots$', MyLots.as_view(), name='user_lots'),
 
     url(r'^admin/', admin.site.urls),
     url(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATIC_ROOT}),

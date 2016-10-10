@@ -19,10 +19,13 @@ from django.contrib import admin
 from django.conf import settings
 from .views import index, dashboard, registration, msg, transactions
 
+
 urlpatterns = [
     url(r'^dashboard', dashboard, name="dashboard"),
     url(r'^registration', registration, name="registration"),
     url(r'^msg', msg, name="msg"),
     url(r'^transactions', transactions, name="transactions"),
     url(r'^', index, name="index"),
+
 ]
+

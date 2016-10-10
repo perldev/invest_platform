@@ -84,8 +84,8 @@ class InvestDeals(models.Model):
 
     lot = models.ForeignKey(InvestLot)
     emission_date = models.DateTimeField(auto_now_add=True)
-    start_date = models.DateTimeField(auto_now_add=False)
-    finish_date = models.DateTimeField(auto_now_add=False)
+    start_date = models.DateTimeField(auto_now_add=False, blank=True, null=True)
+    finish_date = models.DateTimeField(auto_now_add=False, blank=True, null=True)
     status = models.CharField(max_length=40,
                               choices=STATUS_ORDER,
                               default='created')
@@ -99,14 +99,10 @@ class InvestDeals(models.Model):
     def amount(self):
         return self.lot.amount
 
-
-
     class Meta:
-        verbose_name = u'Lot of investments'
-        verbose_name_plural = u'Lots of investments'
+        verbose_name = u'Deal'
+        verbose_name_plural = u'Deals'
         ordering = ('-id',)
-
-
 
 
 @transaction.atomic
