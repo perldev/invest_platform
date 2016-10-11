@@ -1,58 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+{% extends "base.html" %}
 
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/modules/exporting.js"></script>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<style>
-
-    body {
-  padding-top: 50px;
-}
-.starter-template {
-  padding: 40px 15px;
-  text-align: center;
-}
-
-</style>
-
-
-</head>
-<body>
- <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">For investors:</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Investments</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="#login_action"  data-toggle="modal" data-target="#login_action">Sign In</a></li>
-
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
-
-
- <div class="container">
-
+{% block content %}
 
       <div class="starter-template">
 
@@ -64,17 +12,19 @@
 
               <div class="form-group">
                 <label for="inputName" class="control-label pull-left">First Name&Last Name:</label>
-                  <input type="text" class="form-control input-lg" id="inputName" placeholder="First Name&Last Name">
+                  <input type="text" class="form-control input-lg"  name="name"
+                         id="inputName" placeholder="First Name&Last Name">
               </div>
               <div class="form-group">
                 <label for="BirthdayId" class="control-label pull-left">Birthday:</label>
-                  <input type="text" class="form-control input-lg" id="BirthdayId" data-provide="datepicker" placeholder="Birthday">
+                  <input type="text" class="form-control input-lg"
+                         name="birthday"
+                         id="BirthdayId" data-provide="datepicker" placeholder="Birthday">
               </div>
               <div class="form-group has-error">
                 <label for="inputPhone" class="control-label pull-left">Phone:</label>
-                <label class="control-label " for="inputEmail3">Please fill phone correct</label>
-
-                  <input type="email" class="form-control input-lg" id="inputPhone" placeholder="Phon">
+                 <label class="control-label " for="inputPhone">Please fill phone correct</label>
+                  <input type="text" class="form-control input-lg" name="phone" id="inputPhone" placeholder="Phone">
               </div>
               <div class="form-group">
                 <label for="inputNat" class="control-label pull-left">Nationality:</label>
@@ -96,7 +46,8 @@
                 <label for="inputEmail3" class="control-label pull-left">Email:</label>
                 <label class="control-label " for="inputEmail3">Please fill email correct</label>
 
-                  <input type="email" class="form-control input-lg" id="inputEmail3" placeholder="Email">
+                <input type="email" class="form-control input-lg" id="inputEmail3" placeholder="Email">
+
               </div>
               <div class="form-group">
                 <label for="inputPassword3" class="Control-label pull-left">Password:</label>
@@ -126,8 +77,4 @@
 
       </div>
 
-
- </div>
-
-</body>
-</html>
+{% endblock %}

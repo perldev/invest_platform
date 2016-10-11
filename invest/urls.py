@@ -18,7 +18,7 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from django.conf import settings
 from django.views.static import serve
-from api.views import LotsToBuy, MyLots
+from api.views import LotsToBuy, MyLots, Balance, BuyLot
 
 
 
@@ -41,9 +41,12 @@ def api_root(request, format=None):
 
 urlpatterns = [
     url(r'^api/$', api_root),
+    url(r'^api/trans$', MyTrans.as_view(), name='trans'),
+
     url(r'^api/lots$', LotsToBuy.as_view(), name='lots'),
     url(r'^api/my_lots$', MyLots.as_view(), name='user_lots'),
-
+    url(r'^api/buy_lot/([\d]+)$', BuyLot.as_view(), name='buy_lot'),
+    url(r'^api/balance$', Balance.as_view(), name='user_balance'),
     url(r'^admin/', admin.site.urls),
     url(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATIC_ROOT}),
     url(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),

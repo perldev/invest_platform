@@ -28,7 +28,7 @@ class ClientProfile(models.Model):
     phone = models.CharField(max_length=255, verbose_name=u"Phone", null=True, blank=True, )
     nation = models.CharField(max_length=255, verbose_name=u"Nation", null=True, blank=True, )
     birthday = models.DateField(auto_now_add=False, verbose_name=u"Birthday")
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User, null=True, blank=True)
 
 
 # currency
@@ -269,6 +269,7 @@ class Trans(models.Model):
 
     def __unicode__(self):
         return self.id
+
 
 def cancel_trans(modeladmin, request, queryset):
 
