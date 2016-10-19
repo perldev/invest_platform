@@ -18,7 +18,7 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from django.conf import settings
 from django.views.static import serve
-from api.views import LotsToBuy, MyLots, Balance, BuyLot
+from api.views import LotsToBuy, MyLots, Balance, BuyLot, MyTrans
 
 
 
@@ -42,7 +42,7 @@ def api_root(request, format=None):
 urlpatterns = [
     url(r'^api/$', api_root),
     url(r'^api/trans$', MyTrans.as_view(), name='trans'),
-
+    url(r'^accounts/', include('allauth.urls')),
     url(r'^api/lots$', LotsToBuy.as_view(), name='lots'),
     url(r'^api/my_lots$', MyLots.as_view(), name='user_lots'),
     url(r'^api/buy_lot/([\d]+)$', BuyLot.as_view(), name='buy_lot'),
@@ -52,4 +52,8 @@ urlpatterns = [
     url(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
     url(r'^', include('startpage.urls')),
 
+]
+urlpatterns += [
+    url(r'^api-auth/', include('rest_framework.urls',
+                               namespace='rest_framework')),
 ]

@@ -17,18 +17,23 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from django.conf import settings
-from .views import index, dashboard, registration, msg, transactions, regis_confirm, regis_finish
+from .views import index, dashboard, registration, msg,\
+    transactions, regis_confirm, regis_finish, auth_login, auth_logout, deposit
+
+
 
 
 urlpatterns = [
-
     url(r'^dashboard', dashboard, name="dashboard"),
+    url(r'^deposit', deposit, name="deposit"),
 
     url(r'^registration', registration, name="registration"),
     url(r'^registration_confirm', regis_confirm, name="regis_confirm"),
     url(r'^registration_finish', regis_finish, name="regis_finish"),
+    url(r'^auth_logout', auth_logout, name="auth_logout"),
+    url(r'^auth_login', auth_login, name="auth_login"),
     url(r'^msg', msg, name="msg"),
-    url(r'^transactions', transactions, name="transactions"),
+    url(r'^transactions', transactions, name="trans"),
     url(r'^', index, name="index"),
 
 ]

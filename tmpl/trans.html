@@ -4,31 +4,69 @@
 
 {% block content %}
       <div class="starter-template">
-      <div class="row">
-                  <div class="col-md-12">
-                            <!-- Standard button -->
-                            <button type="button" class="btn btn-default">Your Balance: 1000 lari</button>
-
-                            <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-                            <button type="button" class="btn btn-primary">Dashboard of lots</button>
-
-                            <!-- Contextual button for informational alert messages -->
-                            <button type="button" class="btn btn-info">Transaction</button>
-
-                            <!-- Indicates caution should be taken with this action -->
-                            <button type="button" class="btn btn-info">Payin/Withdraw</button>
-                  </div>
-             </div>
+         <div class="row">
+            {% include "user_menu.html" with current="trans" %}
+         </div>
          <div class="row">
             <div class="col-md-12">
               <h3>Transactions:</h3>
-              <table class="table"> <thead> <tr>
-                  <th>#</th> <th>Date</th> <th>Description</th> <th>Amnt</th> </tr> </thead>
-                  <tbody>
-                  <tr class="success"> <th scope="row">3</th> <td>21.02.86</td> <td>Payin buy bank</td> <td>+21 000 lari</td> </tr>
-                  <tr class="danger"> <th scope="row">7</th> <td>21.02.86</td> <td>Buy lot class A</td> <td>-1000 lari</td> </tr>
-              </tr> <tr class="success"> <th scope="row">9</th> <td>21.02.86</td> <td>Refund lot A</td> <td>+100 lari</td> </tr> </tbody>
+              <table class="table"
+                     data-detail-formatter="DASHBOARD.detailFormatterFin"
+                     data-show-pagination-switch="true"
+                     data-id-field="id"
+                     data-page-list="[10, 25, 50, 100, ALL]"
+                     data-side-pagination="server"
+                     data-url="/api/trans"
+                     data-response-handler="DASHBOARD.responseHandler"
+                     class="table table-striped table-hover"
+              > <thead> <tr>
+                  <th data-field="id" >#</th>
+                  <th data-field="pub_date">Date</th>
+                  <th data-field="status">Description</th>
+                  <th data-field="amnt">Amnt</th></tr>
+                </thead>
+                <tbody>
+
+                </tbody>
               </table>
+                <!--<table-->
+                           <!--id="fin_transes_table"-->
+                           <!--data-toolbar="#toolbar_fin_transes_table"-->
+                           <!--data-detail-formatter="DASHBOARD.detailFormatterFin"-->
+                           <!--data-show-refresh="true"-->
+                           <!--data-show-export="true"-->
+                           <!--data-detail-view="true"-->
+                           <!--data-show-toggle="true"-->
+                           <!--data-show-columns="true"-->
+                           <!--data-search="true"-->
+                           <!--data-minimum-count-columns="2"-->
+                           <!--data-show-pagination-switch="true"-->
+                           <!--data-pagination="true"-->
+                           <!--data-id-field="id"-->
+                           <!--data-page-list="[10, 25, 50, 100, ALL]"-->
+                           <!--data-show-footer="false"-->
+                           <!--data-side-pagination="server"-->
+                           <!--data-url="/api/fin_transes/"-->
+                           <!--data-response-handler="DASHBOARD.responseHandler"-->
+                           <!--class="table table-striped table-hover"-->
+                <!--&gt;-->
+                  <!--<thead>-->
+                    <!--<tr>-->
+                      <!--<th data-field="id">#</th>-->
+                      <!--<th data-field="debit_credit">debit/credit</th>-->
+                      <!--<th data-field="description">Description</th>-->
+                      <!--<th data-field="amnt">Amount</th>-->
+                      <!--<th data-field="pub_date">Date</th>-->
+                      <!--<th data-field="status">Status</th>-->
+                    <!--</tr>-->
+                  <!--</thead>-->
+                  <!--<tbody>-->
+            <!---->
+            <!---->
+                  <!--</tbody>-->
+                <!--</table>-->
+
+
 
 
             </div>

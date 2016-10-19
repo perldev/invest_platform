@@ -1,6 +1,8 @@
 
 <div class="modal fade" id="login_action" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-<form>
+<form id="form_login">
+  {% csrf_token %}
+
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -8,11 +10,17 @@
         <h4 class="modal-title" id="myModalLabel">Sign in</h4>
       </div>
       <div class="modal-body">
+          <div class="form-group has-error hidden" id="errors">
+              <label class="control-label" >Check login details</label>
+          </div>
+
           <div class="form-group">
-            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+            <input type="email" class="form-control" name="login_email"
+                   id="login_email" placeholder="Email">
           </div>
           <div class="form-group">
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            <input type="password" class="form-control" name="login_password"
+                   id="login_password" placeholder="Password">
           </div>
           <div class="checkbox">
             <label>
@@ -22,7 +30,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Sign In</button>
+        <button type="button" id="sigin_btn" class="btn btn-primary">Sign In</button>
       </div>
     </div>
   </div>

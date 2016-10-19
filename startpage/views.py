@@ -1,14 +1,18 @@
+
 from django.shortcuts import render
 
 # Create your views here.
 
 from django.shortcuts import render
 # Create your views here.
-from .models import buy_lot, ClientProfile
+from .models import buy_lot, ClientProfile, Accounts
+from django.conf import settings
 
-from django.shortcuts import render_to_response, get_object_or_404
+from django.shortcuts import render_to_response, get_object_or_404, redirect
 from django.http import HttpResponse, HttpResponseBadRequest
 from django.template import RequestContext
+from helpers import http403json, http200json
+from django.contrib.auth import login, authenticate, logout
 
 
 from django.contrib.auth.models import User, Group
@@ -42,12 +46,54 @@ class ClientForm(ModelForm):
          fields = ['name', 'email', 'phone', 'nation', "birthday"]
 
 
+def auth_logout(request):
+    request.session["is_auth"] = False
+    request.session["name"] = ""
+    logout(request)
+    return redirect("/")
 
+
+def auth_login(request):
+
+    email = request.POST.get("login_email", None)
+    pwd = request.POST.get("login_password", None)
+    if not pwd or not email:
+        return http403json(request)
+
+    username = None
+    try:
+        u = User.objects.get(email=email)
+        username = u.username
+    except :
+        return http403json(request)
+
+    user = authenticate(username=username, password=pwd)
+    if user is not None:
+        # A backend authenticated the credentials
+        login(request, user)
+    else:
+        return http403json(request)
+
+    request.session["is_auth"] = True
+    return http200json(request, {"status": True,
+                                 "username": user.username,
+                                 "first_name": user.first_name,
+                                 "last_name":  user.last_name})
+
+
+@login_required
+def deposit(request):
+    return render(request, 'trans.html',
+                  content_type='text/html')
+
+
+@login_required
 def transactions(request):
     return render(request, 'trans.html',
                   content_type='text/html')
 
 
+@login_required
 def dashboard(request):
     return render(request, 'dashboard.html',
                   content_type='text/html')
@@ -78,3 +124,28 @@ def msg(request):
 def index(request):
     return render(request, 'index.html',
                   content_type='text/html')
+
+
+class Client(object):
+
+    def __init__(self, *args, **kwargs):
+        self.__user = kwargs["user"]
+
+    def get_balance(self):
+        user = self.__user
+        acc = Accounts.objects.get(client = user, currency_id=settings.DEFAULT_CURRENCY)
+        return acc.balance
+
+
+
+
+def context_processor(request):
+    greed_msg = ""
+    if request.user.is_authenticated() :
+        greed_msg = "Hello, %s" % request.user.username
+        client = Client(user=request.user)
+        return {"greed_msg": greed_msg,
+                "client": client
+               }
+
+    return {}
