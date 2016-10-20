@@ -18,10 +18,7 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from django.conf import settings
 from django.views.static import serve
-from api.views import LotsToBuy, MyLots, Balance, BuyLot, MyTrans
-
-
-
+from api.views import LotsToBuy, MyLots, Balance, BuyLot, MyTrans, MyInvoices, CreateWithdraw
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
@@ -42,7 +39,8 @@ def api_root(request, format=None):
 urlpatterns = [
     url(r'^api/$', api_root),
     url(r'^api/trans$', MyTrans.as_view(), name='trans'),
-    url(r'^accounts/', include('allauth.urls')),
+    url(r'^api/create/withdraw$', CreateWithdraw.as_view(), name='create-wirthdraw'),
+    url(r'^api/invoices/', MyInvoices.as_view(), name='invoices'),
     url(r'^api/lots$', LotsToBuy.as_view(), name='lots'),
     url(r'^api/my_lots$', MyLots.as_view(), name='user_lots'),
     url(r'^api/buy_lot/([\d]+)$', BuyLot.as_view(), name='buy_lot'),

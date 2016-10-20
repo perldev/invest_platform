@@ -1,0 +1,5 @@
+{% load rest_framework %}
+<form action="{{ url }}" method="POST" id="edit_create_form">
+    {% csrf_token %}
+    {% render_form serializer %}
+</form>

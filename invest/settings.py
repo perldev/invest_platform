@@ -30,6 +30,15 @@ INVESTMENT_ACCOUNT = 2
 PERCENT_ACCOUNT = 3
 ACCOUNT_ACTIVATION_DAYS = 7
 
+COMPANY_NAME = "MicroCredit Georgia Mame"
+COMPANY_TAXID = "123143120"
+COMPANY_REGID = "9834123"
+COMPANY_BANK = "TBC"
+COMPANY_ACC = "GL121239011231"
+COMPANY_COUNTRY = "Georgia"
+COMPANY_CITY = "Tbilisi"
+COMPANY_ADDR = "Write here something where are you"
+
 ALLOWED_HOSTS = []
 
 # Application definition
@@ -105,7 +114,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
 
-    'django.contrib.staticfiles',
+    # 'django.contrib.staticfiles',
     'startpage'
 ]
 
@@ -126,7 +135,7 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    # 'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',

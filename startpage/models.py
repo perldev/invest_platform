@@ -6,6 +6,7 @@ from django.conf import settings
 
 from django.db import models
 from django.contrib import admin
+from django.utils import timezone
 
 
 DEBIT_CREDIT = (
@@ -16,6 +17,9 @@ DEBIT_CREDIT = (
 STATUS_ORDER = (
     ("created", u"создан"),
     ("processing", u'в работе'),
+    ("processed", u'обработан'),
+    ("invest", u'проинвестирован'),
+
     ("refund", u'сделка'),
     ("canceled", u'отменен'),
 )
@@ -154,18 +158,30 @@ def add_trans(from_acc, amnt, currency, to_acc, status="insufficient_funds", str
 
 
 class BankTransfers(models.Model):
-    from_bank = models.CharField(max_length=255, verbose_name=u"from account")
+    from_bank = models.CharField(max_length=255, verbose_name=u"from bank")
     from_account = models.CharField(max_length=255, verbose_name=u"from account")
-    description = models.CharField(max_length=255, verbose_name=u"Описание")
+    client = models.ForeignKey(User, verbose_name=u"Клиент", null=True)
+    description = models.CharField(max_length=255, verbose_name=u"Описание", blank=True, null=True)
+    name = models.CharField(max_length=255, verbose_name=u"Имя получателя", blank=True, null=True)
+    country = models.CharField(max_length=255, verbose_name=u"Страна", blank=True, null=True)
+    city = models.CharField(max_length=255, verbose_name=u"Город", blank=True, null=True)
+    address = models.CharField(max_length=255, verbose_name=u"Адресс", blank=True, null=True)
     currency = models.ForeignKey("Currency", verbose_name=u"Валюта")
     amnt = models.DecimalField(max_digits=18, decimal_places=2, verbose_name=u"Сумма")
+
     user_accomplished = models.ForeignKey(User, verbose_name=u"Manager",
                                           related_name="operator_processed",
                                           blank=True, null=True)
-    pub_date = models.DateTimeField(auto_now_add=False, verbose_name=u"Дата")
+    pub_date = models.DateTimeField(auto_now_add=True, verbose_name=u"Дата")
+
+
+
+
+    processed_pub_date = models.DateTimeField(auto_now_add=False, verbose_name=u"Дата проводки", null=True)
     status = models.CharField(max_length=40,
                               choices=STATUS_ORDER,
                               default='created')
+
     debit_credit = models.CharField(max_length=40,
                                     choices=DEBIT_CREDIT,
                                     default='in')
@@ -183,24 +199,49 @@ class BankTransfers(models.Model):
 @transaction.atomic
 def process_bank_acc(bank_transfer, user):
     bank_transfer = BankTransfers.objects.get(id=bank_transfer, status="created", debit_credit="in")
-    acc_to = Accounts.objects.get(client=user)
-    acc_from = Accounts.objects.get(id=settings.BANK_ACCOUNT)
-    add_trans(acc_from, bank_transfer.amount, bank_transfer.currency, acc_to, "invest", True)
-    bank_transfer.status = "invest"
+    acc_to = Accounts.objects.get(client=bank_transfer.client, currency=bank_transfer.currency)
+    acc_from = Accounts.objects.get(id=settings.BANK_ACCOUNT, currency=bank_transfer.currency)
+    add_trans(acc_from, bank_transfer.amnt, bank_transfer.currency, acc_to, "invest", False)
+    bank_transfer.status = "processed"
+    now = timezone.now()
+
+    bank_transfer.processed_pub_date = now()
+
+    bank_transfer.user_accomplished = user
     bank_transfer.save()
     return True
 
 
+
+def accept_transfer(modeladmin, request, queryset):
+    for transfer in queryset:
+        if transfer.debit_credit == "in":
+            process_bank_acc(transfer.id, request.user)
+
+        if transfer.debit_credit == "out":
+            transfer.status = "processed"
+            now = timezone.now()
+            transfer.processed_pub_date = now
+            transfer.user_accomplished = request.user
+            transfer.save()
+
+accept_transfer.short_description = "Mark selected invoices as received"
+
+
 # TODO banks account
 class BankTransfersAdmin(admin.ModelAdmin):
-    list_display = ["id", 'from_bank', 'from_account', 'to_bank', 'to_account',
+    list_display = ["id", 'client', 'from_bank', 'from_account',
                     'description', "debit_credit",
                     'amnt', 'currency',
                     'status', "user_accomplished"]
 
-    search_fields = ['^from_account', '^to_account', '^description', '=amnt', '^user__username', '^status']
+    search_fields = ['^from_account',  '^description', '=amnt', '^user__username', '^status']
+
     exclude = ("user_accomplished",)
-    fields = ('from_bank', 'from_account', 'to_bank', 'to_account', 'description',
+
+    actions = [accept_transfer]
+
+    fields = ('from_bank', 'from_account', 'processed_pub_date', 'description',
               'status', 'amnt', 'currency')
 
     def __init__(self, *args, **kwargs):

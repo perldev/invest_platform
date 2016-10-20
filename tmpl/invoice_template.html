@@ -1,0 +1,220 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0051)https://my.blazingfast.io/clientarea/invoice/75919/ -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<!--<base href="https://my.blazingfast.io/">--><base href=".">
+<link media="screen" type="text/css" rel="stylesheet" href="/static/bootstrap.css">
+<link media="all" type="text/css" rel="stylesheet" href="/static/invoice.css">
+<link media="print" type="text/css" rel="stylesheet" href="/static/invoice_print.css">
+<title> {{TO}} - Invoice #{{id}} </title>
+
+</head>
+<body>
+<div id="backlink"><a href="/deposit">- Back to Client Area -</a></div>
+<div id="invoice-container" class="unpaid-container">
+<div id="invoice-content">
+<!--<div id="status-ribbon" class="Paid">Paid</div>-->
+<div>
+
+<style type="text/css"><!--
+body {
+font-family: 'Lato', sans-serif;
+font-size: 9pt;
+}
+.top {
+color: #454545;
+padding-top: 30px;
+text-align: center;
+padding-bottom: 40px;
+}
+.hr {
+height: 0px;
+margin: 0 auto;
+border-bottom: 1px solid #f7f5f5;
+font-size: 1px;
+width: 50%;
+padding-top: 12px;
+}
+.2hr {
+height: 0px;
+border-bottom: 1px solid #f7f5f5;
+font-size: 1px;
+width: 200px;
+padding-top: 12px;
+}
+.from {
+padding-left: 20px;
+}
+.to {
+padding-left: 80px;
+}
+.to,
+.from {
+width: 40%;
+font-size: 12pt;
+line-height: 18pt;
+float: left;
+color: #606060;
+}
+h1 {
+font-size: 20pt;
+color: #3178b2;
+margin: 0px;
+line-height: 28pt;
+font-weight: bold;
+}
+h2 {
+font-size: 14pt;
+font-weight: bold;
+}
+.transtab td {
+color: #FFF;
+padding: 11px 16px 11px 16px;
+text-align: center;
+}
+.sum td{
+font-size: 11pt;
+padding: 6px 0px 6px 0px;
+}
+.table-content {
+float: left;
+margin-top: 50px;
+width: 900px;
+margin-left: 30px;
+}
+table {
+border-spacing:0;
+border-collapse:collapse;
+}
+.tab {
+width: 900px;
+margin-bottom: 30px;
+font-size: 10pt;
+}
+.tab th {
+background: #3178b2;
+color: #FFF;
+padding: 15px 10px 15px 15px;
+text-align: left;
+}
+.tab td{
+padding: 15px 10px 15px 15px;
+}
+.tab tr:nth-child(even) {
+background-color: #f7f8f8;
+}
+.tfirst {
+width: 45%;
+}
+.tsecond {
+width: 15%;
+}
+.third {
+width: 10%;
+}
+.tforth {
+width: 20%;
+}
+.notes {
+width: 55%
+display:inline-block;
+float: left;
+color: #626262;
+padding: 5px 10px 15px 15px;
+}
+.summary {
+width: 40%;
+float: right;
+}
+.transaction {
+margin-top: 60px;
+background: #3178b2;
+color: #dadada;
+width: 100%;
+float: left;
+text-align: center;
+padding-top: 5px;
+vertical-align: middle;
+}
+.footer {
+background: #296698;
+color: #fff;
+width: 100%;
+float: left;
+text-align: center;
+height: 45px;
+vertical-align: middle;
+}
+--></style>
+
+
+<div class="top">
+<span style="font-size: 18pt;">Invoice {{id}}</span><br><div class="hr">&nbsp;</div>
+<br> Date of Invoice {{date}}</div>
+<div class="to">
+<span style="color: #d5d5d5;">From:</span>
+<h1>{{TO}}</h1>
+{{TO_BANK}}<br/>
+{{TO_ACC}}<br/>
+{{TO_ADDR}}<br/>{{TO_CITY}},<br/>{{TO_COUNTRY}}<br/><br/>Reg. no.{{TO_REGID}}<br>Tax ID: {{TO_TAXID}}</div>
+<div class="from">
+<span style="color: #d5d5d5;">To:</span>
+<h1></h1>
+<p>{{name}}<br/>
+    {{country}}<br/>
+    {{city}}<br/>
+    {{address}}
+</p>
+</div>
+<div class="table-content">
+<table class="tab" style="border: 1px solid #f1f1f1; width: 690px;"><tbody>
+<tr>
+<th class="tfirst">Description</th>
+<th class="tsecond">Unit cost</th>
+<th class="third">Qty</th>
+<th class="tforth">Price</th>
+</tr>
+<tr>
+<td class="tfirst">Investments in credits </td>
+<td class="tsecond">{{amnt}} {{currency}}</td>
+<td class="third">1.00</td>
+<td class="tforth">{{amnt}} {{currency}}</td>
+</tr></tbody></table>
+<div class="notes">
+<h2></h2>
+</div>
+<div class="summary" style="width: 50%;">
+<table class="sum"><tbody>
+<tr style="border-bottom: 1px solid #f5f5f5;">
+<td style="padding-right: 58px;">
+<h2>Total</h2>
+</td>
+<td>
+<h2><span style="color: #3178b2;">{{amnt}} {{currency}}</span></h2>
+</td>
+</tr>
+<tr>
+<td style="padding-right: 38px;">Subtotal:</td>
+<td>{{amnt}} {{currency}}</td>
+</tr>
+<tr>
+<td style="padding-right: 38px;">Credit:</td>
+<td>€0.00 EUR</td>
+</tr>
+</tbody></table>
+</div>
+</div>
+
+</div>
+</div>
+<div class="right" id="payform-container">
+<div id="paymenu">
+<a href="#" onclick="window.print();" class="pelem"><i class="icon-print"></i> Print Invoice</a>
+<a href="#" class="pelem"><i class="icon-download-alt"></i> Download PDF</a>
+</div>
+</div>
+<div style="clear:both"></div>
+</div>
+
+
+</body></html>

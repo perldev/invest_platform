@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+<head data-gwd-animation-mode="quickMode">
+<!--[if !IE]><!--><script>if (!!window.MSStream) {
+                document.documentElement.className += ' ie10';
+            }</script><!--<![endif]-->
+<base href="https://my.blazingfast.io/" />
+<meta charset="utf-8">
+<meta name="interkassa-verification" content="1e100c53e05532cf85173a159d45df79" />
+<meta name="interkassa-verification" content="5b143fa8ec140048cbbbe22f7f18527b" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>  BlazingFast</title>
+<link media="all" type="text/css" rel="stylesheet" href="https://my.blazingfast.io/templates/regentstblue/css/main.css" />
+<link media="all" type="text/css" rel="stylesheet" href="https://my.blazingfast.io/templates/regentstblue/css/bootstrap.min.css" />
+<link media="all" type="text/css" rel="stylesheet" href="https://my.blazingfast.io/templates/regentstblue/css/font-awesome.css">
+<link media="all" type="text/css" rel="stylesheet" href="https://my.blazingfast.io/templates/regentstblue/css/clientarea.css" />
+<link media="all" type="text/css" rel="stylesheet" href="https://my.blazingfast.io/templates/regentstblue/css/jquery.pnotify.default.css" />
+<link media="all" type="text/css" rel="stylesheet" href="https://my.blazingfast.io/templates/regentstblue/css/progress-buttons.css" />
+<link media="all" type="text/css" rel="stylesheet" href="https://my.blazingfast.io/templates/regentstblue/css/gap-icons.css">
+<link media="all" type="text/css" rel="stylesheet" href="https://my.blazingfast.io/templates/regentstblue/css/client_area_main.css">
+<!--[if lt IE 7]>
+<link media="all" type="text/css" href="https://my.blazingfast.io/templates/regentstblue/css/font-awesome-ie7.min.css" rel="stylesheet">
+<![endif]-->
+<!--[if lt IE 9]>
+<link media="all" type="text/css" rel="stylesheet" href="https://my.blazingfast.io/templates/regentstblue/css/ie8.css" />
+<script type="text/javascript" src="https://my.blazingfast.io/templates/regentstblue/js/html5.js"></script>
+<![endif]-->
+<script type="text/javascript" src="https://my.blazingfast.io/templates/regentstblue/js/jquery.js"></script>
+<script type="text/javascript" src="https://my.blazingfast.io/templates/regentstblue/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://my.blazingfast.io/templates/regentstblue/js/common.js"></script>
+<script type="text/javascript" src="https://my.blazingfast.io/templates/regentstblue/js/jquery.cookie.js"></script>
+<script type="text/javascript" src="https://my.blazingfast.io/templates/regentstblue/js/jquery-ui-1.8.2.custom.min.js"></script>
+<script type="text/javascript" src="https://my.blazingfast.io/templates/regentstblue/js/jquery.nicescroll.min.js"></script>
+<script type="text/javascript" src="https://my.blazingfast.io/templates/regentstblue/js/jquery.pnotify.min.js"></script>
+<script type="text/javascript" src="https://my.blazingfast.io/templates/regentstblue/js/progress-button.js"></script>
+<script type="text/javascript" src="https://my.blazingfast.io/templates/regentstblue/js/script.js"></script>
+<script type="text/javascript" src="https://my.blazingfast.io/?cmd=hbchat&amp;action=embed"></script>
+<meta name="csrf-token" content="4db79abaa2a55ff71b2dba0609225e1e"/>
+<script type="text/javascript">
+   var states= {"IE":["Antrim","Armagh","Carlow","Cavan","Clare","Cork","Derry","Donegal","Down","Dublin","Fermanagh","Galway","Kerry","Kildare","Kilkenny","Laois","Leitrim","Limerick","Longford","Louth","Mayo","Meath","Monaghan","Offaly","Roscommon","Sligo","Tipperary","Tyrone","Waterford","Westmeath","Wexford","Wicklow"],"AU":["Australian Capital Territory","Jervis Bay Territory","New South Wales","Northern Territory","Queensland","South Australia","Tasmania","Victoria","Western Australia"],"CA":["Alberta","British Columbia","Manitoba","New Brunswick","Newfoundland","Northwest Territories","Nova Scotia","Nunavut","Ontario","Prince Edward Island","Quebec","Saskatchewan","Yukon Territory"],"FR":["Alsace","Aquitaine","Auvergne","Basse-Normandie","Bourgogne","Bretagne","Centre","Champagne-Ardenne","Corse","Franche-Comte","Haute-Normandie","Ile-de-France","Languedoc-Roussillon","Limousin","Lorraine","Midi-Pyrenees","Nord-Pas-de-Calais","Pays de la Loire","Picardie","Poitou-Charentes","Provence-Alpes-Cote d'Azur","Rhone-Alpes"],"DE":["Baden-Wuerttemberg","Bayern","Berlin","Brandenburg","Bremen","Hamburg","Hessen","Mecklenburg-Vorpommern","Niedersachsen","Nordrhein-Westfalen","Rheinland-Pfalz","Saarland","Sachsen","Sachsen-Anhalt","Schleswig-Holstein","Thueringen"],"IL":["Central","Haifa","Jerusalem","Northern","Southern","Tel Aviv"],"NL":["Drenthe","Flevoland","Friesland","Gelderland","Groningen","Limburg","Noord-Brabant","Noord-Holland","Overijssel","Utrecht","Zeeland","Zuid-Holland"],"GB":["Aberdeen City","Aberdeenshire","Angus","Antrim","Argyll and Bute","Armagh","Barking and Dagenham","Barnet","Barnsley","Bath and North East Somerset","Bedfordshire","Bexley","Birmingham","Blackburn with Darwen","Blackpool","Blaenau Gwent","Bolton","Bournemouth","Bracknell Forest","Bradford","Brent","Bridgend","Brighton and Hove","Bromley","Buckinghamshire","Bury","Caerphilly","Calderdale","Cambridgeshire","Camden","Cardiff","Carmarthenshire","Ceredigion","Cheshire","City of Bristol","City of Edinburgh","City of Kingston upon Hull","City of London","Clackmannanshire","Conwy","Cornwall","Coventry","Croydon","Cumbria","Darlington","Denbighshire","Derby","Derbyshire","Derry","Devon","Doncaster","Dorset","Down","Dudley","Dumfries and Galloway","Dundee City","Durham","Ealing","East Ayrshire","East Dunbartonshire","East Lothian","East Renfrewshire","East Riding of Yorkshire","East Sussex","Eilean Siar (Western Isles)","Enfield","Essex","Falkirk","Fermanagh","Fife","Flintshire","Gateshead","Glasgow City","Gloucestershire","Greenwich","Gwynedd","Hackney","Halton","Hammersmith and Fulham","Hampshire","Haringey","Harrow","Hartlepool","Havering","Herefordshire","Hertfordshire","Highland","Hillingdon","Hounslow","Inverclyde","Isle of Anglesey","Isle of Man","Isle of Wight","Islington","Kensington and Chelsea","Kent","Kingston upon Thames","Kirklees","Knowsley","Lambeth","Lancashire","Leeds","Leicester","Leicestershire","Lewisham","Lincolnshire","Liverpool","Luton","Manchester","Medway","Merthyr Tydfil","Merton","Middlesbrough","Midlothian","Milton Keynes","Monmouthshire","Moray","Neath Port Talbot","Newcastle upon Tyne","Newham","Newport","Norfolk","North Ayrshire","North East Lincolnshire","North Lanarkshire","North Lincolnshire","North Somerset","North Tyneside","North Yorkshire","Northamptonshire","Northumberland","Nottingham","Nottinghamshire","Oldham","Orkney Islands","Oxfordshire","Pembrokeshire","Perth and Kinross","Peterborough","Plymouth","Poole","Portsmouth","Powys","Reading","Redbridge","Redcar and Cleveland","Renfrewshire","Rhondda Cynon Taff","Richmond upon Thames","Rochdale","Rotherham","Rutland","Salford","Sandwell","Sefton","Sheffield","Shetland Islands","Shropshire","Slough","Solihull","Somerset","South Ayrshire","South Gloucestershire","South Lanarkshire","South Tyneside","Southampton","Southend-on-Sea","Southwark","St. Helens","Staffordshire","Stirling","Stockport","Stockton-on-Tees","Stoke-on-Trent","Suffolk","Sunderland","Surrey","Sutton","Swansea","Swindon","Tameside","Telford and Wrekin","The Scottish Borders","The Vale of Glamorgan","Thurrock","Torbay","Torfaen","Tower Hamlets","Trafford","Tyrone","Wakefield","Walsall","Waltham Forest","Wandsworth","Warrington","Warwickshire","West Berkshire","West Dunbartonshire","West Lothian","West Sussex","Westminster","Wigan","Wiltshire","Windsor and Maidenhead","Wirral","Wokingham","Wolverhampton","Worcestershire","Wrexham","York"],"US":["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","District of Columbia","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Carolina","North Dakota","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"],"ES":["A Coru\u00f1a","\u00c1lava","Albacete","Alicante","Almer\u00eda","Asturias","\u00c1vila","Badajoz","Barcelona","Burgos","C\u00e1ceres","C\u00e1diz","Cantabria","Castell\u00f3n","Ceuta","Ciudad Real","C\u00f3rdoba","Cuenca","Girona","Granada","Guadalajara","Guip\u00fazcoa","Huelva","Huesca","Islas Baleares","Ja\u00e9n","Le\u00f3n","Lleida","Lugo","Madrid","M\u00e1laga","Melilla","Murcia","Navarra","Ourense","Palencia","Las Palmas","Pontevedra","La Rioja","Salamanca","Segovia","Sevilla","Soria","Tarragona","Santa Cruz de Tenerife","Teruel","Toledo","Valencia","Valladolid","Vizcaya","Zamora","Zaragoza"],"BR":["Acre","Alagoas","Amap\u00e1","Amazonas","Bahia","Cear\u00e1","Distrito Federal","Goi\u00e1s","Esp\u00edrito Santo","Maranh\u00e3o","Mato Grosso","Mato Grosso do Sul","Minas Gerais","Par\u00e1","Para\u00edba","Paran\u00e1","Pernambuco","Piau\u00ed","Rio de Janeiro","Rio Grande do Norte","Rio Grande do Sul","Rond\u00f4nia","Roraima","S\u00e3o Paulo","Santa Catarina","Sergipe","Tocantins"]};$(document).ready(function(){$("input[name=state]").attr("id","state_input"),$("select[name=country]").change(function(){var a=$(this).val(),b=$("#state_input").val();if(states[a]){var c=$("#state_input:visible, #state_select:visible").width(); $("#state_input:visible").length == 0 ? c+=10 : c; d=$("#state_input").hide().removeAttr("name").parent();d.find("#state_select").remove();var e='<select id="state_select" name="state">';for(key in states[a])states[a][key]==b?e+='<option selected="selected">'+states[a][key]+"</option>":e+="<option>"+states[a][key]+"</option>";e+="</select>",d.append(e);if(c!=10){ $("#state_select").width(c)} else { $("#state_select").css('width','auto'); }}else $("#state_input").attr("name","state").show().parent().find("#state_select").remove()}).change()})
+</script>
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-49085746-1']);
+_gaq.push(['_setDomainName', 'blazingfast.io']);
+_gaq.push(['_trackPageview']);
+
+
+(function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+</head>
+<body>
+<div id="background"></div>
+<header id="main-header" class="navbar">
+<div class="navbar-inner">
+<div class="container">
+<a href="clientarea" class="brand" style="padding: 7px 13px 5px;"><img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQkAAAAjCAMAAACw9g+yAAAAzFBMVEUAAADnTDw0mNvnTDw0mNs0mNvnTDw0mNs0mNvnTDw0mNs0mNs0mNvnTDznTDznTDznTDw0mNvnTDznTDw0mNvnTDznTDznTDw0mNvnTDznTDw0mNs0mNs0mNvnTDznTDw0mNvnTDznTDznTDznTDw0mNs0mNvnTDznTDw0mNvnTDznTDw0mNvnTDw0mNvnTDznTDznTDznTDw0mNs0mNvnTDznTDw0mNs0mNvnTDw0mNs0mNvnTDznTDw0mNs0mNs0mNs0mNvnTDw0mNvhZAtbAAAAQnRSTlMAvdnVZws5jhs09VVHZfLorZmUUAYDeqYtRybNE32ELSQfCxnKpIVcEu9rQMWcPfz44NvUrYtzM+nET/vQtlzdunYjvBtSAAAHPklEQVRo3uWY6ZaiMBCFSwXFdscVtMF933dtV/r932myFJ2Azqhn5szMOf39aQwhTYrKrZvA86inzPB8vrTj8L3Rlp8uvSt8P3KV6vh0bbeG549Pie0Yvgu5XE4bx9rLYG/79nmPGHwLVK26GceU93Zb2bd6294bT4ht5hTfXy88FLdqMSgkJDp2HijGOtHv1+FZautEohB+bd0qfvavPr2Bx7Q/XT4U91kWizcNfDQdL3ObNOZT5GoGT5NwCH14hfdPPxd4nhh94B0eUhYyqfn+9xK8dKeOjzRptelFEZ5mRPsP4BUwSSXa8DwZ+sBj2Wvh0P7OrI6UwEPW8bMjrR16UYCnCZHuqfxLkoZaLvFKnR/S/IZHxNm4mf0+48sf7eM28tlm2qUYmLg5odOLKDxLvrCy9NcWR/Uc9FN5IY49MpMyPKBUpvJQYjGp+uTjwfMFh2CRix35O+0+F4X8ze9H5OF32T9RCKuLT4ry82wZVuSXqpmmWROR4Mu9McFVYk1Dgma6T+ZgzmchiVmIBCwxCc1TNpGLZCi1q3cOc3brkC7wYA70Y0hisvqpDkYk2m5tGCvtiEwbK0KLXN8TTWam3jNvXChVkFGrY+UaWZa37ObbRip/DuEISJr+InEJuzIRcrzot8IyJ92ONIUa0E2Sv820IwgALjUBZt1yS/Cvh94d+6MOP30EqeIhC880N3vlndhJ2UstchiBuHLNXPCWAEPhk0Y+kxC5WNPW7J3CcgCw5N9YYWY0hTCAU/mZZNcfOsw6VUxDoPnnXEaZ9/IuhUz5MtWbcVyJZFqU5bJ14VpZzWlVdqfdugzLC0oweN5uez3it6hqnoGD8yrYWYJhHOmPEWktYm7cTKIJEMDLKQkbBszGdEk4fpJ1TDSZSQNgw9K7JEEk7eSf8xCj42UP1ZvaqKoVTauohFyOZkGE3jxxv6lVyehVjVAhsD4UUEQoMa+92HRRYG7UjDASNY9YV6ID+nvQNVMYCEyhBLqKQDRKO5hsTYQw0Zy1zUaxZzyx2FsI8JVKMZe9wuQugh3Lyj4myPGQtUjbHu6j9h76EwzXEA0X8ZI+qGVu3PNVfbGORAyTrNIWMYJN/OCMMCZYWB6sMWWNaHkEtz7H/WCte8Yhwh54YEGHjyu5lBS24ydBWo0v72wn1oXCer1ehWFFGw1AwhO2WOrCV9W5+gY8lq2P9agju/I1OiMvOSZ5cY4GGdSzILUE73GE2QJ8+lf244ozfAAdvC196J1eZCSFr+KT7h4cFwN28gfvoC9n1PB6wKeJ6JhhI0wYxggdW4UVuLJEhMSh9SaWf5l2uFNOMsyfPvJVkXPFTFgjK5unX82yzJ/vSjLAWMn7hQQKHzRR64SITPPAKqTQWYJrCwz8UfBkzQ4Hmct7uSY6tjGqgMCTJ2+8tgzxZT3EXLmFu+Szq6NuVHLGiH3Y1KoBdiHJpiVTKY1j10xPvEUTKx2jj3lcT/FJh+XqKe/JiriOkBUqZ1o2pvUkr6yYMJzGBNfPFaVdZizvSsfulqy09UWiJTTklsaKC1+zw44K5vSN+vSN8dXVCikkp8wl+CGUWhiInSefo5jlI/zGTSIUBT0LfTH5IxYNjx8z+dc/gCyYK5QLS27UXZNQvbO9DGYocSlUOeISkAVupjP3BLNu2gNd9oAUi4Y+nQc4OFFeUkvj+EkhnE7xzZl6mqr8ZsicCx9OmjuHmX/ZQ41F/VCHL2bcaZqeipPAQSwRNUk9F1wFBNgW9GybNfCBO8iFXE/y9W6jZhp9q5jymsAaMQEGS99ZGOpOCvwoaNNEZexGKfYIjTfKGp9hKmyym+Ycl/1gwnQjnA/T9kFDRCArLxmsrPg3bdK+ta9G7c5JiUrlclFhtkdVqapvaSsjR1G1Nt+7V2hAPvYqgUWiYdrhgTEIG8QcZjur9AwNHAl5t27irrI7pYmpCWIsw7aqJOUTB3Gl/8APG2qOnwAtGoxkEps6wrDrntOaJhuEhxPpfx1jxFEFZOIolhwMlfImwc/gVNh89azCPRqJubxCTKrdqb5RNOr7n56JzG/ccUNsRG8jod+2mSICGEBJG4/giUQUXPVsc9PsIXZvf5G5aWxhzFhUwANJjuggu15ZBX035cIZ5SuVnUXqI/MsjySLtun4yYKkcTv/XePuRhSdZWNy66s8G9Hpl4pq95yRdru/QDchQ7evFWlbcks3anTWVgBFQ68xLUkUOnogGvENdi4BEg4FZNLrBnNNs0AgNKAxLhzl281Al96TmVuk17EZCI34YHNmTHGQ3cFmV2nWlfax0HCMh+SE6gI+NkvaLFioUAl6KF+uqtzzVzYyb+POb8TyojEKRUveMCzjv3N2lP+tjnj88bfIhjBxd01W7Datd4lYBf4RuN2bw1+kE3BLqgH/E1Est3+TWtbSV4ka/F8cebn9ntRDk5TLFEvp98S8Pf77pvQdH/+Xcv1FVk5SYlY04U/zA/GWo05FRnIOAAAAAElFTkSuQmCC' alt="BlazingFast Logo"/>
+<div class="nav-collapse collapse navbar-responsive-collapse">
+<ul class="nav pull-right">
+<li id="language-change" class="dropdown">
+<a data-toggle="dropdown" class="dropdown-toggle" href="#" style="padding-top: 0px;">
+<span class="icon icon-WorldWide"></span>
+<span class="menu_text">
+English                                        </span>
+<b class="caret"></b></a>
+<ul class="dropdown-menu">
+<li id="lang_Deutsch">
+<a href="templates&action=default&languagechange=Deutsch">
+Deutsch
+<span></span>
+</a>
+</li>
+<li id="lang_English">
+<a href="templates&action=default&languagechange=English">
+English
+<span></span>
+</a>
+</li>
+<li id="lang_French">
+<a href="templates&action=default&languagechange=French">
+Français
+<span></span>
+</a>
+</li>
+<li id="lang_Polish">
+<a href="templates&action=default&languagechange=Polish">
+Polski
+<span></span>
+</a>
+</li>
+<li id="lang_Portuguese">
+<a href="templates&action=default&languagechange=Portuguese">
+Portuguese
+<span></span>
+</a>
+</li>
+<li id="lang_Spanish">
+<a href="templates&action=default&languagechange=Spanish">
+Espanol
+<span></span>
+</a>
+</li>
+<li id="lang_Turkish">
+<a href="templates&action=default&languagechange=Turkish">
+Türk
+<span></span>
+</a>
+</li>
+<li id="lang_Русский">
+<a href="templates&action=default&languagechange=Русский">
+Русский
+<span></span>
+</a>
+</li>
+<li id="lang_Українська">
+<a href="templates&action=default&languagechange=Українська">
+Українська
+<span></span>
+</a>
+</li>
+</ul>
+</li>
+<li class="divider-vertical">
+</li>
+<li>
+<a class="login-widget" href="?action=logout">
+<span class="icon icon-Exit"></span>
+<span class="menu_text">Logout</span>
+</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</header>
+<div class="nav-space">
+<div id="page" class="">
+<header id="sub-header">
+<ul class="circle-full pull-right">
+<li id="main-search" class="round">
+<a href="#search">
+<i class="fa fa-search"></i>
+</a>
+<div class="search-content">        
+<div class="dropdown pull-right">
+<a class="dropdown-toggle" data-toggle="dropdown" href="clientarea/domains/">
+Domains                <span class="caret"></span>
+</a>
+<ul class="dropdown-menu" >
+<li>
+<a href="clientarea/domains/">Domains</a>
+<form id="search-domains" class="form-inline" action="clientarea/domains/" method="post" style="display: none">
+<input type="hidden" class="search-field" name="filter[name]" >
+</form>
+</li>
+<li>
+<a href="knowledgebase/search/">Knowledgebase</a>
+<form id="search-knowledgebase" class="form-inline" action="knowledgebase/search/" method="post" style="display: none">
+<input type="hidden" name="query" class="search-field">
+</form>
+</li>
+<li>
+<a href="tickets">Support Tickets</a>
+<form id="search-tickets" class="form-inline" action="tickets" method="post" style="display: none">
+<input type="hidden" name="filter[subject]" class="search-field">
+</form>
+</li>
+</ul>
+</div>
+<span><input type="text" /></span>
+</div>
+</li>
+<li>
+<a href="clientarea/details/">
+<span class="icon-stack">
+<i class="fa fa-user"></i>
+</span>
+</a>
+</li> 
+<li id="account">
+<span class="menu_text">Bogdan Chayka</span>
+</li>
+</ul>
+<a  href="tickets/" data-toggle="tooltip" title="Support Tickets">
+<span class="icon icon-FileBox"></span>
+<div>1</div>
+</a>
+<span  class="separator-vertical"></span>
+<a href="clientarea/invoices/" data-toggle="tooltip" title="Invoices">
+<span class="icon icon-File"></span>
+<div></div>
+</a>
+</header>
+<aside id="main-side" class="pull-left">
+<header>
+<i class="fa fa-bars"></i>
+</header>
+<nav class="nav nav-stacked">
+<li >
+<a class="aftericon-chevron " href="clientarea/">
+<div class="border">
+<span class="icon icon-House"></span>
+</div>
+<span>Dashboard</span>
+</a>
+</li>
+<li >
+<a href="cart/" class="aftericon-chevron ">
+<div class="border">
+<span class="icon icon-Cloud"></span>
+</div>
+<span>Order</span>
+</a>
+<ul class="dropdown-menu">
+<li>
+<a href="cart/ssd-cloud-server-ams-nl/">SSD Cloud Server (AMS-NL)</a>
+</li>
+<li>
+<a href="cart/dedicated/">Bare Metal Server</a>
+</li>
+<li>
+<a href="cart/domains/">Domains</a>
+</li>
+<li>
+<a href="cart/hosting/">cPanel Web hosting</a>
+</li>
+<li>
+<a href="cart/dns/">DNS</a>
+</li>
+<li>
+<a href="cart/firewall/">Firewall</a>
+</li>
+<li>
+<a href="cart/ssl/">SSL</a>
+</li>
+<li>
+<a href="cart/cpanel-licenses/">cPanel Licenses</a>
+</li>
+</ul></li>
+<li >
+<a href="clientarea/services/" class="aftericon-chevron ">
+<div class="border">
+<span class="icon icon-Settings"></span>
+</div>
+<span>Services</span>
+</a>
+<ul class="dropdown-menu color-sky-blue">
+<li>
+<a href="clientarea/services/ssd-cloud-server-ams-nl/"> SSD Cloud Server (AMS-NL) <span class="badge badge-top"></span> </a>
+</li>
+</ul></li>
+<li >
+<a href="clientarea/" class="aftericon-chevron ">
+<div class="border">
+<span class="icon icon-User"></span>
+</div>
+<span>Account</span>
+</a>
+<ul class="dropdown-menu">
+<li><a  href="clientarea/details/" >Edit Details </a></li>
+<li><a  href="clientarea/password/" >Change password </a></li>
+<li><a  href="profiles/" >Manage contacts </a></li>
+<li ><a  href="clientarea/ipaccess/" >Security </a></li>    <li><a  href="clientarea/addfunds/">Add Funds </a></li>    <li ><a  href="clientarea/invoices/">Invoices </a></li>
+<li ><a  href="clientarea/emails/">Emails </a></li>
+<li ><a  href="clientarea/history/">Logs </a></li>
+</ul>
+</li>
+<li >
+<a href="knowledgebase/" class="aftericon-chevron ">
+<div class="border">
+<span class="icon icon-Help"></span>
+</div>
+<span>Support</span>
+</a>
+<ul class="dropdown-menu">
+<li>
+<a  href="tickets/new/">Open New Support Ticket</a>
+</li>
+<li>
+<a  href="tickets/">Tickets Archive</a>
+</li>
+<li>
+<a  href="knowledgebase/">Knowledgebase</a>
+</li>
+<li>
+<a  href="https://blazingstatus.online" target="_blank">Network Status</a>
+</li>
+</ul>
+</li>
+<li >
+<a href="affiliates/" class="aftericon-chevron ">
+<div class="border">
+<span class="icon icon-Share"></span>
+</div>
+<span>Affiliates</span>
+</a>
+</li>
+</nav>
+</aside>            <script type="text/javascript">
+    var infos = [], errors=[];
+                    
+        
+    $(function(){
+        pnotify(infos,'info');
+        pnotify(errors,'error');
+    });
+    function pnotify(list, type){
+        for(var i in list)
+            $.pnotify({
+                text: list[i],
+                type: type,
+                hide: false,
+                sticker: false,
+                icon: false
+            });
+    }
+    
+    
+</script>            <section id="main-section" class="not-cart cmd-templates" >
+<!-- Breadcrumbs -->
+<ul class="container-breadcrumb default  default ">
+<li>
+<i class="icon icon-House"></i><span class="divider">/</span>
+</li>
+<li>
+<a href="">Dashboard</a><span class="divider">/</span>
+</li>
+<li class="active">
+templates
+</li>
+</ul>
+<!-- End of Breadcrumbs --><div class="container">
+<div class="row">
+<div class="span12">
+<div class="hero-unit text-center" style="text-align: center">
+<h1>
+Oops!</h1>
+<h2>
+404 Not Found</h2>
+<div class="error-details">
+Sorry, an error has occured, Requested page not found!
+</div>
+<div class="error-actions">
+<br />
+<a href="" class="btn btn-primary"><span class="icon icon-home icon-white"></span>
+Portal Home </a>
+<a href="tickets/new" class="btn btn-default"><span class="icon icon-envelope"></span> Open New Support Ticket </a>
+</div>
+</div>
+</div>
+</div>
+</div></div></div>            </section>
+</div>
+<footer id="main-footer">
+<div></div>
+<div class="pull-right" style="line-height: 33px;">
+<a href="https://blazingfast.io/contact.html" target="_blank"><span class="copyright">BlazingFast &copy; 2015</span></a>
+</div>
+<ul class="nav nav-pills">
+<li><a href="cart/">Order</a></li>
+<li><a href="knowledgebase/">Support</a></li>
+<li><a href="affiliates/">Affiliates</a></li>
+<li><a href="https://blazingfast.io/tos" target="_blank">Terms of Service</a></li>
+<li><a href="https://blazingfast.io/privacy" target="_blank">Privacy Policy</a></li>
+<li><a href="https://blazingfast.io/aup" target="_blank">Acceptable Use Policy</a></li>
+</ul>
+<script type="text/javascript" src="https://cdn.ywxi.net/js/1.js" async></script>
+</footer>
+</div>
+</body>
+</html>

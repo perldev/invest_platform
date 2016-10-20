@@ -5,7 +5,7 @@ from django.shortcuts import render
 
 from django.shortcuts import render
 # Create your views here.
-from .models import buy_lot, ClientProfile, Accounts
+from .models import buy_lot, ClientProfile, Accounts, Currency, BankTransfers
 from django.conf import settings
 
 from django.shortcuts import render_to_response, get_object_or_404, redirect
@@ -20,6 +20,7 @@ from django.contrib.auth.decorators import login_required, permission_required
 
 from django.forms import ModelForm
 from django import forms
+from decimal import Decimal
 
 """
 name = models.CharField(max_length=255, verbose_name=u"First name&Last name", null=True, blank=True, )
@@ -83,7 +84,44 @@ def auth_login(request):
 
 @login_required
 def deposit(request):
-    return render(request, 'trans.html',
+    return render(request, 'deposit.html',
+                  content_type='text/html')
+
+
+@login_required
+def invoice_create(request):
+    context = {}
+    for i in  request.POST:
+        context[i] = request.POST.get(i)
+
+    context["TO"] = settings.COMPANY_NAME
+    context["TO_TAXID"] = settings.COMPANY_TAXID
+    context["TO_REGID"] = settings.COMPANY_REGID
+    context["TO_COUNTRY"] = settings.COMPANY_COUNTRY
+    context["TO_CITY"] = settings.COMPANY_CITY
+    context["TO_ADDR"] = settings.COMPANY_ADDR
+    context["TO_BANK"] = settings.COMPANY_BANK
+    context["TO_ACC"] = settings.COMPANY_ACC
+    currency = Currency.objects.get(id=request.POST.get("currency"))
+    transfer = BankTransfers(client=request.user,
+                             currency=currency,
+                             amnt=Decimal(request.POST.get("amnt")),
+                             from_bank=settings.COMPANY_BANK,
+                             from_account=settings.COMPANY_ACC,
+                             )
+    transfer.save()
+    context["id"] = transfer.id
+    context["date"] = transfer.pub_date
+
+    context["currency"] = currency.short_title
+    return render(request, 'invoice_template.html', context=context,
+                  content_type='text/html')
+
+
+@login_required
+def invoice(request, invoice):
+    context = {}
+    return render(request, 'invoice_template.html', context=context,
                   content_type='text/html')
 
 
@@ -136,6 +174,10 @@ class Client(object):
         acc = Accounts.objects.get(client = user, currency_id=settings.DEFAULT_CURRENCY)
         return acc.balance
 
+
+    def get_currency(self):
+        cur = Currency.objects.get(id=settings.DEFAULT_CURRENCY)
+        return cur.short_title
 
 
 

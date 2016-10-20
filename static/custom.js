@@ -18,8 +18,6 @@
                     $("#greed_msg").html("<a href=\"#\">Hello, "+data.username+"</a>");
                     $("#greed_msg").removeClass("hidden");
                     $("#logout_btn").removeClass("hidden");
-
-
                     $("#login_action").modal("hide");
 
                 },

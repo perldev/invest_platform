@@ -5,28 +5,41 @@
 {% block content %}
       <div class="starter-template">
          <div class="row">
-            {% include "user_menu.html" with current="trans" %}
+            {% include "user_menu.html" with current="deposit" %}
          </div>
          <div class="row">
             <div class="col-md-12">
-              <h3>Transactions:</h3>
-              <table class="table"
+                <br/>
+
+                <div class="btn-group" role="group" >
+                  <button type="button" class="btn btn-success" id="add_funds">Add Funds</button>
+                  <button type="button" class="btn btn-default" id="withdraw_funds">Withdraw Funds</button>
+                </div>
+
+
+            </div>
+            <div class="col-md-12">
+              <h3>Invoices:</h3>
+              <table class="table table-striped table-bordered table-hover"
+                     id="invoices_table"
                      data-detail-formatter="DASHBOARD.detailFormatterFin"
                      data-show-pagination-switch="true"
                      data-id-field="id"
                      data-page-list="[10, 25, 50, 100, ALL]"
                      data-side-pagination="server"
-                     data-url="/api/trans"
+                     data-url="/api/invoices/"
                      data-response-handler="DASHBOARD.responseHandler"
-                     class="table table-striped table-hover"
-              > <thead> <tr>
-                  <th data-field="id" >#</th>
-                  <th data-field="pub_date">Date</th>
-                  <th data-field="status">Description</th>
-                  <th data-field="amnt">Amnt</th></tr>
+              > <thead>
+                    <tr>
+                      <th data-field="id" >#</th>
+                      <th data-field="pub_date">Date</th>
+                      <th data-field="processed_pub_date">Processed Date</th>
+                      <th data-field="amnt">Amnt</th>
+                      <th data-field="status">Status</th>
+                   </tr>
                 </thead>
-                <tbody>
 
+                <tbody>
                 </tbody>
               </table>
                 <!--<table-->
@@ -74,8 +87,14 @@
 
       </div>
 
+{% include "bank_invoice.html" %}
+{% include "bank_withdraw.html" %}
+
+
 {%  endblock %}
 
 {% block scripts %}
     <script src="/static/custom.js"></script>
+    <script src="/static/deposit.js"></script>
+
 {% endblock %}

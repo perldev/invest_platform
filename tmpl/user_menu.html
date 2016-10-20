@@ -1,24 +1,24 @@
 <div class="col-md-12">
         <!-- Standard button -->
-        <button type="button" class="btn btn-default">Your Balance: {{ client.get_balance }} lari</button>
+        <button  class="btn btn-default">Your Balance: {{ client.get_balance }} {{ client.get_currency }}</button>
 
         <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
         {% if current == "dashboard" %}
-            <button type="button" href="#" class="btn btn-info">Dashboard of lots</button>
+            <a  href="#" class="btn btn-info">Dashboard of lots</a>
         {% else %}
-            <button type="button" href="{% url 'dashboard' %}" class="btn btn-primary">Dashboard of lots</button>
+            <a  href="{% url 'dashboard' %}" class="btn btn-primary">Dashboard of lots</a>
         {% endif %}
 
         {% if current == "trans" %}
         <!-- Contextual button for informational alert messages -->
-            <button type="button" href="#" class="btn btn-info">Transaction</button>
+            <a  href="#" class="btn btn-info">Transaction</a>
         {% else %}
-            <button type="button" href="{% url 'trans' %}" class="btn btn-primary">Transaction</button>
+            <a  href="{% url 'trans' %}" class="btn btn-primary">Transaction</a>
         {% endif %}
         <!-- Indicates caution should be taken with this action -->
         {% if current == "deposit" %}
-            <button type="button" href="#" class="btn btn-info">Payin/Withdraw</button>
+            <a  href="#" class="btn btn-info">Payin/Withdraw</a>
         {% else %}
-            <button type="button" href="{% url 'deposit' %}" class="btn btn-primary">Payin/Withdraw</button>
+            <a  href="{% url 'deposit' %}" class="btn btn-primary">Payin/Withdraw</a>
         {% endif %}
 </div>
