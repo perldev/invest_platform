@@ -7,6 +7,7 @@ from django.conf import settings
 from django.db import models
 from django.contrib import admin
 from django.utils import timezone
+from datetime import date, timedelta as td, datetime
 
 
 DEBIT_CREDIT = (
@@ -19,8 +20,10 @@ STATUS_ORDER = (
     ("processing", u'в работе'),
     ("processed", u'обработан'),
     ("invest", u'проинвестирован'),
-
-    ("refund", u'сделка'),
+    ("payin", u'пополнение'),
+    ("withdraw", u'вывод средств'),
+    ("refund", u'закрытие сделки'),
+    ("deal", "сделка"),
     ("canceled", u'отменен'),
 )
 
@@ -74,6 +77,8 @@ class InvestLot(models.Model):
                                   max_length=40, verbose_name="Percent objections on year")
     working_days = models.IntegerField()
 
+
+
     class Meta:
         verbose_name = u'Lot of investments'
         verbose_name_plural = u'Lots of investments'
@@ -81,6 +86,16 @@ class InvestLot(models.Model):
 
     def __unicode__(self):
         return self.name
+
+
+class InvestDealsAdmin(admin.ModelAdmin):
+    list_display = ["id", 'emission_date', 'start_date', 'finish_date',
+                    'status', "owner",
+                    'admount_refund',
+                    ]
+
+    list_filter = ('status', 'owner')
+    search_fields = ['^owner__username', '^status']
 
 
 # invest deal
@@ -93,7 +108,22 @@ class InvestDeals(models.Model):
     status = models.CharField(max_length=40,
                               choices=STATUS_ORDER,
                               default='created')
+
     owner = models.ForeignKey(User, blank=True, null=True)
+
+    buy_trans = models.ForeignKey('Trans',
+                                  related_name="trans_buy",
+                                  blank=True, null=True)
+    refund_trans = models.ForeignKey('Trans',
+                                     related_name="trans_refund",
+                                     blank=True, null=True)
+
+    admount_refund = models.DecimalField(default="0.0",
+                                         max_digits=10,
+                                         decimal_places=4,
+                                         verbose_name="Amount of refund",
+                                         blank=True,
+                                         null=True)
 
     @property
     def currency(self):
@@ -201,7 +231,7 @@ def process_bank_acc(bank_transfer, user):
     bank_transfer = BankTransfers.objects.get(id=bank_transfer, status="created", debit_credit="in")
     acc_to = Accounts.objects.get(client=bank_transfer.client, currency=bank_transfer.currency)
     acc_from = Accounts.objects.get(id=settings.BANK_ACCOUNT, currency=bank_transfer.currency)
-    add_trans(acc_from, bank_transfer.amnt, bank_transfer.currency, acc_to, "invest", False)
+    add_trans(acc_from, bank_transfer.amnt, bank_transfer.currency, acc_to, "payin", False)
     bank_transfer.status = "processed"
     now = timezone.now()
 
@@ -210,7 +240,6 @@ def process_bank_acc(bank_transfer, user):
     bank_transfer.user_accomplished = user
     bank_transfer.save()
     return True
-
 
 
 def accept_transfer(modeladmin, request, queryset):
@@ -309,7 +338,7 @@ class Trans(models.Model):
         ordering = ('-id',)
 
     def __unicode__(self):
-        return self.id
+        return str(self.id)
 
 
 def cancel_trans(modeladmin, request, queryset):
@@ -334,15 +363,26 @@ class TransAdmin(admin.ModelAdmin):
 @transaction.atomic
 def buy_lot(type_of_lot, user):
 
-    lot = InvestDeals.objects.filter(status="created", lot_id=type_of_lot).order_by('id').first()
-    if not lot:
+    deal = InvestDeals.objects.filter(status="created", lot_id=type_of_lot).order_by('id').first()
+    if not deal:
         raise TransError("there is no lot for sale")
-    acc_from = Accounts.objects.get(client=user)
-    acc_to = Accounts.objects.get(id=settings.INVESTMENT_ACCOUNT)
-    add_trans(acc_from, lot.amount, lot.currency, acc_to, "deal", True)
-    lot.status = "processing"
-    lot.owner = user
-    lot.save()
+    # TODO add currency exchange
+    lot = deal.lot
+    acc_from = Accounts.objects.get(client=user,
+                                    currency=lot.currency)
+    acc_to = Accounts.objects.get(id=settings.INVESTMENT_ACCOUNT,
+                                  currency=lot.currency)
+    trans = add_trans(acc_from, lot.amount, lot.currency, acc_to, "deal", True)
+
+    now = timezone.now()
+    deal.start_date = now
+    deal.finish_date = now + td(days=lot.working_days)
+    deal.status = "processing"
+    deal.owner = user
+    deal.buy_trans = trans
+    deal.admount_refund = lot.amount*(1+lot.percent/100)
+    deal.save()
+
     return True
 
 

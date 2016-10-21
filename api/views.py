@@ -4,7 +4,7 @@ from rest_framework.reverse import reverse
 from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.response import Response
 from .serializers import *
-from startpage.models import InvestDeals, buy_lot, TransError, Accounts, BankTransfers, add_trans
+from startpage.models import InvestDeals, buy_lot, TransError, Accounts, BankTransfers, add_trans, InvestLot
 from django.db import models
 from django.conf import settings
 
@@ -15,6 +15,105 @@ from django.db.models import Q
 from rest_framework import filters
 from django.db.models import Count
 from django.utils import timezone
+
+MONTH = ["",
+'Jan',
+'Feb',
+'Mar',
+'Apr',
+'May',
+'Jun',
+'Jul',
+'Aug',
+'Sep',
+'Oct',
+'Nov',
+'Dec'
+]
+
+
+class CashFlowInfo(APIView):
+
+    def get(self, request, format=None):
+
+        user = request.user
+        list_q1 = []
+        for acc in Accounts.objects.filter(client=user):
+            list_q1.append(Q(user1=acc))
+            list_q1.append(Q(user2=acc))
+        query = list_q1.pop()
+        # gather all accounts of client
+        for q in list_q1:
+            query |= q
+
+        now = timezone.now()
+        year = now.year
+
+        # adding year objections
+
+        q_obj = Trans.objects.filter((query) & Q(pub_date__year=year)).order_by("id")
+        result_month = {}
+
+        current_month = None
+        current_addit = {}
+        for trans in q_obj:
+            dtime = trans.pub_date
+            if dtime.month != current_month:
+                if current_month is not None:
+                    result_month[current_addit["month"]] = current_addit
+
+                current_month = dtime.month
+                current_addit = {"cashin":0,
+                                 "cashout":0,
+                                 "invest":0,
+                                 "refund_investments":0,
+                                 "wait_income": 0,
+                                 "month": MONTH[dtime.month]}
+
+            if trans.status == "deal":
+                current_addit["invest"] += trans.amnt
+                continue
+
+            if trans.status == "withdraw":
+                current_addit["cashout"] += trans.amnt
+                continue
+
+            if trans.status == "payin":
+                current_addit["cashin"] += trans.amnt
+                continue
+
+            if trans.status == "refund":
+                current_addit["refund_investments"] += trans.amnt
+                continue
+
+        q_obj = Q(owner=user) & Q(finish_date__year=year) & Q(status="processing")
+
+        for trans in InvestDeals.objects.filter(q_obj).order_by("id"):
+            dtime = trans.finish_date
+            if dtime.month != current_month:
+                if current_month is not None:
+                    result_month[current_addit["month"]] = current_addit
+
+                current_month = dtime.month
+                current_addit = {"cashin": 0,
+                                 "cashout": 0,
+                                 "invest": 0,
+                                 "refund_investments": 0,
+                                 "wait_income": 0,
+                                 "month": MONTH[dtime.month]}
+
+            current_addit["wait_income"] += trans.admount_refund
+            continue
+
+        result_month[current_addit["month"]] = current_addit
+        return Response({"categories": MONTH[1:], "result": result_month})
+
+
+class LotInfo(APIView):
+
+    def get(self, request, pk, format=None):
+        lot = InvestLot.objects.get(id=pk)
+        return Response({"lot_info": LotSerializer(lot).data, "status": True})
 
 
 class LotsToBuy(APIView):
@@ -87,13 +186,11 @@ class Balance(APIView):
         return Response(res)
 
 
-
 class MyInvoices(generics.ListAPIView):
     """
         Get transes for one user
 
     """
-
     filter_backends = (filters.SearchFilter,)
     search_fields = ('^amnt', '^status' )
     model = BankTransfers
@@ -125,7 +222,6 @@ class CreateWithdraw(generics.CreateAPIView):
         return Response({"status": True}, status=200)
 
 
-
 class MyTrans(generics.ListAPIView):
     """
         Get transes for one user
@@ -134,8 +230,27 @@ class MyTrans(generics.ListAPIView):
     filter_backends = (filters.SearchFilter,)
     search_fields = ('^amnt', 'id' )
     model = Trans
-    serializer_class = TransSerializer
+    serializer_class = UserTransSerializer
     ordering = ('-id',)
+
+    def __init__(self, *args, **kwargs):
+        self.__accounts = None
+        super(MyTrans, self).__init__(*args, **kwargs)
+
+    def get_serializer(self, *args, **kwargs):
+        """
+        Return the serializer instance that should be used for validating and
+        deserializing input, and for serializing output.
+        """
+
+        serializer_class = self.get_serializer_class()
+        kwargs['context'] = self.get_serializer_context()
+        kwargs['accounts'] = self.__accounts
+        return serializer_class(*args, **kwargs)
+
+    def get(self, *args, **kwargs):
+        self.__accounts = [i.id for i in Accounts.objects.filter(client=self.request.user)]
+        return super(MyTrans, self).get(*args, **kwargs)
 
     def get_queryset(self):
         user = self.request.user
@@ -148,6 +263,7 @@ class MyTrans(generics.ListAPIView):
         for q in list_q1:
             query |= q
 
-        return Trans.objects.filter(q)
+        q_obj = Trans.objects.filter(query)
+        return q_obj
 
 
