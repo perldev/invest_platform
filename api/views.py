@@ -45,10 +45,10 @@ class CashFlowInfoLot(APIView):
         q_obj = Q(owner=user) & Q(start_date__year=year) & Q(status="processed")
         q_obj = InvestDeals.objects.filter(q_obj).order_by("id")
 
-        result = dict([ (MONTH[i], {"invest":0,
-                                    "refund_investments":0,
-                                    "wait_income":0
-                                    })  for i in range(1,13)] )
+        result = dict([(MONTH[i], {"invest":0,
+                                   "refund_investments": 0,
+                                   "wait_income": 0
+                                   }) for i in range(1, 13)])
         
         current_month = None
         current_addit = {}
@@ -91,8 +91,14 @@ class CashFlowInfo(APIView):
 
         # adding year objections
 
+
         q_obj = Trans.objects.filter((query) & Q(pub_date__year=year)).order_by("id")
-        result_month = {}
+        result_month = dict([(MONTH[i], {"invest": 0,
+                                         "refund_investments": 0,
+                                         "wait_income": 0
+                                         "cashin": 0,
+                                         "cashout": 0,
+                                        }) for i in range(1, 13)])
 
         current_month = None
         current_addit = {}
