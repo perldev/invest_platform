@@ -49,7 +49,7 @@
 
             {% for item in deals_in%}
             <p class="text-left"> <span class="glyphicon glyphicon-user"><strong>{{item.owner__username}}</strong></span>,
-                    купил  <strong>{{item.dcount}}</strong> кредит(а) на сумму <strong>{{item.dsum}}</strong> {{item.lot__currency__short_title}}</p>
+                    купил(а)  <strong>{{item.dcount}}</strong> кредит(а) на сумму <strong>{{item.dsum}}</strong> {{item.lot__currency__short_title}}</p>
             {% endfor %}
         </div>
 
