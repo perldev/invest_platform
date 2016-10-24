@@ -111,56 +111,56 @@
 
             var title = data.lot.title;
             
-            Highcharts.chart(
-                    "container"
-                    ,{
-                    chart: {
-                        type: 'column'
-                    },
-                    title: {
-                        text: 'Движение по  '+ title +':'
-                    },
-                    subtitle: {
-                        text: ''
-                    },
-                    xAxis: {
-                        categories:categories,
-                        crosshair: true
-                    },
-                    yAxis: {
-                        min: 0,
-                        title: {
-                            text: 'Инвестиции'
-                        }
-                    },
-                    tooltip: {
-                        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-                        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                            '<td style="padding:0"><b>{point.y:.1f} USD</b></td></tr>',
-                        footerFormat: '</table>',
-                        shared: true,
-                        useHTML: true
-                    },
-                    plotOptions: {
-                        column: {
-                            pointPadding: 0.2,
-                            borderWidth: 0
-                        }
-                    },
-                    series: [ {
-                        name: 'Инвестиции',
-                        data: Invest
+            highchart = Highcharts.chart(
+                                "container"
+                                ,{
+                                chart: {
+                                    type: 'column'
+                                },
+                                title: {
+                                    text: 'Движение по  '+ title +':'
+                                },
+                                subtitle: {
+                                    text: ''
+                                },
+                                xAxis: {
+                                    categories:categories,
+                                    crosshair: true
+                                },
+                                yAxis: {
+                                    min: 0,
+                                    title: {
+                                        text: 'Инвестиции'
+                                    }
+                                },
+                                tooltip: {
+                                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                                        '<td style="padding:0"><b>{point.y:.1f} USD</b></td></tr>',
+                                    footerFormat: '</table>',
+                                    shared: true,
+                                    useHTML: true
+                                },
+                                plotOptions: {
+                                    column: {
+                                        pointPadding: 0.2,
+                                        borderWidth: 0
+                                    }
+                                },
+                                series: [ {
+                                    name: 'Инвестиции',
+                                    data: Invest
 
-                    }, {
-                        name: 'Возврат инвестиций ',
-                        data: RefundInvest
+                                }, {
+                                    name: 'Возврат инвестиций ',
+                                    data: RefundInvest
 
-                    },
-                    {
-                        name: 'Ожидаемый доход',
-                        data: Wait
-                    }
-                    ]
+                                },
+                                {
+                                    name: 'Ожидаемый доход',
+                                    data: Wait
+                                }
+                                ]
                 });
     };
     
@@ -223,7 +223,7 @@
                         type: 'column'
                     },
                     title: {
-                        text: 'Ваш денежный поток:'
+                        text: 'Ваше денежный поток:'
                     },
                     subtitle: {
                         text: ''
