@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Инвестиционная платформа Mame</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
     <script src="https://code.highcharts.com/highcharts.js"></script>
@@ -36,18 +36,20 @@
       <div class="starter-template">
 
         <div class="col-md-3 pull-left">
-            <h3 class="text-left">Выплаченные доходы:</h3>
-            {% for item in lots%}
-            <p class="text-left"> <span class="glyphicon glyphicon-user">{{item.name}}</span>,
-                    выплачено <strong>{{item.amount}}</strong> {{item.currency}}</p>
+            <h3 class="text-left">Выплаты по лотам:</h3>
+            <br/>
+            {% for item in deals_out %}
+            <p class="text-left"> <span class="glyphicon glyphicon-user"><strong>{{item.owner__username}}</strong></span>,
+                    выплатили <strong>{{item.dsum}}</strong> {{item.lot__currency__short_title}}</p>
             {% endfor %}
         </div>
         <div class="col-md-3 pull-right">
-
             <h3 class="text-left">Купили лоты:</h3>
-            {% for item in lots%}
-            <p class="text-left"> <span class="glyphicon glyphicon-user">{{item.name}}</span>,
-                    купил  <strong>{{item.count}}</strong> кредитов на сумму <strong>{{item.amount}}</strong> {{item.currency}}</p>
+            <br/>
+
+            {% for item in deals_in%}
+            <p class="text-left"> <span class="glyphicon glyphicon-user"><strong>{{item.owner__username}}</strong></span>,
+                    купил  <strong>{{item.dcount}}</strong> кредит(а) на сумму <strong>{{item.dsum}}</strong> {{item.lot__currency__short_title}}</p>
             {% endfor %}
         </div>
 

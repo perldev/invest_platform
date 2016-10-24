@@ -15,13 +15,17 @@
                     console.log("ok");
                     $("#regis_nav").addClass("hidden");
                     $("#login_nav").addClass("hidden");
-                    $("#greed_msg").html("<a href=\"#\">Hello, "+data.username+"</a>");
+                    $("#greed_msg").html("<a href=\"#\">Привет, "+data.username+"</a>");
+
                     $("#greed_msg").removeClass("hidden");
                     $("#logout_btn").removeClass("hidden");
+                    $("#dashboard").removeClass("hidden");
+
                     $("#login_action").modal("hide");
 
                 },
                 error: function(data){
+                    $("#login_password").val("");
                     $("#errors").removeClass("hidden");
 
                 },

@@ -88,12 +88,27 @@ class InvestLot(models.Model):
         return self.name
 
 
+@transaction.atomic
+def close_deal(modeladmin, request, queryset):
+    for deal in queryset:
+        deal.status = "processed"
+        lot = deal.lot
+        acc_to = Accounts.objects.get(client=deal.owner,
+                                      currency=lot.currency)
+        acc_from = Accounts.objects.get(id=settings.INVESTMENT_ACCOUNT,
+                                        currency=lot.currency)
+
+        add_trans(acc_from, deal.admount_refund, lot.currency, acc_to, "refund", False)
+        deal.save()
+
+close_deal.short_description = "Close deal"
+
 class InvestDealsAdmin(admin.ModelAdmin):
     list_display = ["id", 'emission_date', 'start_date', 'finish_date',
                     'status', "owner",
                     'admount_refund',
                     ]
-
+    actions = [close_deal]
     list_filter = ('status', 'owner')
     search_fields = ['^owner__username', '^status']
 

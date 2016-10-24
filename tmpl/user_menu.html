@@ -1,24 +1,24 @@
 <div class="col-md-12">
         <!-- Standard button -->
-        <button  class="btn btn-default">Your Balance: {{ client.get_balance }} {{ client.get_currency }}</button>
+        <button  class="btn btn-default">Ваш баланс: {{ client.get_balance }} {{ client.get_currency }}</button>
 
         <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
         {% if current == "dashboard" %}
-            <a  href="#" class="btn btn-info">Dashboard of lots</a>
+            <a  href="#" class="btn btn-info">Торговля</a>
         {% else %}
-            <a  href="{% url 'dashboard' %}" class="btn btn-primary">Dashboard of lots</a>
+            <a  href="{% url 'dashboard' %}" class="btn btn-primary">Торговля</a>
         {% endif %}
 
         {% if current == "trans" %}
         <!-- Contextual button for informational alert messages -->
-            <a  href="#" class="btn btn-info">Transaction</a>
+            <a  href="#" class="btn btn-info">Транзакции</a>
         {% else %}
-            <a  href="{% url 'trans' %}" class="btn btn-primary">Transaction</a>
+            <a  href="{% url 'trans' %}" class="btn btn-primary">Транзакции</a>
         {% endif %}
         <!-- Indicates caution should be taken with this action -->
         {% if current == "deposit" %}
-            <a  href="#" class="btn btn-info">Payin/Withdraw</a>
+            <a  href="#" class="btn btn-info">Ввод/Вывод</a>
         {% else %}
-            <a  href="{% url 'deposit' %}" class="btn btn-primary">Payin/Withdraw</a>
+            <a  href="{% url 'deposit' %}" class="btn btn-primary">Ввод/Вывод</a>
         {% endif %}
 </div>

@@ -1,4 +1,4 @@
-
+# -*- coding: utf-8 -*-
 from django.shortcuts import render
 
 # Create your views here.
@@ -17,9 +17,9 @@ from django.contrib.auth import login, authenticate, logout
 
 from django.contrib.auth.models import User, Group
 from django.contrib.auth.decorators import login_required, permission_required
-from django.db.models import Q, Sum
+from django.db.models import Q, Sum, Count
 from django.utils import timezone
-
+from datetime import date, timedelta as td, datetime
 
 from django.forms import ModelForm
 from django import forms
@@ -164,24 +164,30 @@ def msg(request):
 
 def index(request):
     q_obj = InvestDeals.objects.filter(Q(status="created")|Q(status="processing")).values("status").annotate(dsum=Sum("lot__amount")).order_by()
-    di = dict([ (i["status"],i["dsum"]) for i in q_obj])
+    di = dict([ (i["status"], i["dsum"]) for i in q_obj])
     context = {"lots_buyed": di["processing"],
-               "lots_free":di["created"] }
+               "lots_free": di["created"],
+               "cabinet": False
+               }
 
-    ub_date__lte=datetime.date.today()
-               
-    deals = InvestDeals.objects.filter(status="processing", ).values("owner__username",
-                                                                   "owner_id").annotate(dcount=Count("owner_id"),
-                                                                                        dsum=Sum("lot__amount")        
+    period = timezone.now() - td(days=90)
+
+    deals = InvestDeals.objects.filter(Q(status="processing") & Q(start_date__gte=period)).values("owner__username",
+                                                                     "owner_id", "lot__currency__short_title").annotate(dcount=Count("owner_id"),
+                                                                                         dsum=Sum("lot__amount")
                                                                    ).order_by()
 
-    deals_repay = InvestDeals.objects.filter(status="processed", ).values("owner__username",
-                                                                   "owner_id").annotate(dcount=Count("owner_id"),
-                                                                                        dsum=Sum("lot__amount")
+    deals_repay = InvestDeals.objects.filter(Q(status="processed") & Q(finish_date__gte=period)).values("owner__username",
+                                               "owner_id", "lot__currency__short_title").annotate(dcount=Count("owner_id"), dsum=Sum("admount_refund")
                                                                    ).order_by()
-                
-               
-    
+
+
+
+    context["deals_in"] = deals
+    context["deals_out"] = deals_repay
+
+
+
     return render(request, 'index.html',
                   context=context,
                   content_type='text/html')
@@ -207,10 +213,11 @@ class Client(object):
 def context_processor(request):
     greed_msg = ""
     if request.user.is_authenticated() :
-        greed_msg = "Hello, %s" % request.user.username
+        greed_msg = u"Привет, %s" % request.user.username
         client = Client(user=request.user)
         return {"greed_msg": greed_msg,
-                "client": client
+                "client": client,
+                "cabinet": True,
                }
 
     return {}

@@ -6,9 +6,9 @@
             var info = [];
             var data = resp.lot_info;
             info.push("<h3>" + data.name  +"</h3>");
-            info.push("<p> Duration: " + data.working_days  +"</p>");
-            info.push("<p> Price: " + data.amount  +" </p>");
-            info.push("<p> Objections: " + data.percent  +"</p>");
+            info.push("<p> Срок инвестиции: " + data.working_days  +"</p>");
+            info.push("<p> Цена: " + data.amount  +" </p>");
+            info.push("<p> Условия(%): " + data.percent  +"</p>");
             return info.join("");
     };
 
@@ -19,7 +19,7 @@
             type: 'get',
             async: false,
             success: function (data) {
-                var html = "You have buy the lot";
+                var html = "Операции успешно проведена";
                 MyCommon.modal(html);
                 load_dashboard();
             },
@@ -118,7 +118,7 @@
                         type: 'column'
                     },
                     title: {
-                        text: 'Your CashFlow '+ title +':'
+                        text: 'Движение по  '+ title +':'
                     },
                     subtitle: {
                         text: ''
@@ -130,7 +130,7 @@
                     yAxis: {
                         min: 0,
                         title: {
-                            text: 'Investements' 
+                            text: 'Инвестиции'
                         }
                     },
                     tooltip: {
@@ -148,16 +148,16 @@
                         }
                     },
                     series: [ {
-                        name: 'Investments',
+                        name: 'Инвестиции',
                         data: Invest
 
                     }, {
-                        name: 'Refund Investments',
+                        name: 'Возврат инвестиций ',
                         data: RefundInvest
 
                     },
                     {
-                        name: 'Future Income',
+                        name: 'Ожидаемый доход',
                         data: Wait
                     }
                     ]
@@ -223,7 +223,7 @@
                         type: 'column'
                     },
                     title: {
-                        text: 'Your CashFlow:'
+                        text: 'Ваш денежный поток:'
                     },
                     subtitle: {
                         text: ''
@@ -235,7 +235,7 @@
                     yAxis: {
                         min: 0,
                         title: {
-                            text: 'Investements'
+                            text: 'Инвестиции'
                         }
                     },
                     tooltip: {
@@ -253,24 +253,24 @@
                         }
                     },
                     series: [{
-                        name: 'CashIn',
+                        name: 'Пополнение',
                         data: CashIn
 
                     }, {
-                        name: 'Cash Out',
+                        name: 'Вывод',
                         data: CashOut
 
                     }, {
-                        name: 'Investments',
+                        name: 'Инвестиции',
                         data: Invest
 
                     }, {
-                        name: 'Refund Investments',
+                        name: 'Инвестиционный доход',
                         data: RefundInvest
 
                     },
                     {
-                        name: 'Future Income',
+                        name: 'Ожидаемая прибыль',
                         data: Wait
 
                     }
@@ -301,13 +301,13 @@
                         console.log(deals)
                         for(var i in deals){
                             lots.push("<a href=\"#\" class=\"list-group-item \">"+deals[i].lot__name+"&nbsp;<span class=\"badge\">"+ deals[i].dcount
-                                         + "</span><button type=\"button\" class=\"btn btn-success buy_lot\" data-id=\""+deals[i].lot_id+"\" >Buy</button>&nbsp;"+
-                                           "<button type=\"button\" class=\"btn btn-info info_lot\" data-id=\""+deals[i].lot_id+"\" >Info</button></a>");
+                                         + "</span><button type=\"button\" class=\"btn btn-success buy_lot\" data-id=\""+deals[i].lot_id+"\" >Купить</button>&nbsp;"+
+                                           "<button type=\"button\" class=\"btn btn-info info_lot\" data-id=\""+deals[i].lot_id+"\" >Подробнее</button></a>");
                             total_count += deals[i].dcount*1;
                             total_amount += deals[i].lot__amount*deals[i].dcount;
                         }
-                        lots.push('<a href="#" class="list-group-item list-group-item-success">Total amount: <span class="badge">'+ total_amount +'</span></a>');
-                        lots.push('<a href="#" class="list-group-item list-group-item-success">Total count: <span class="badge">'+total_count +'</span></a>');
+                        lots.push('<a href="#" class="list-group-item list-group-item-success">Сумма: <span class="badge">'+ total_amount +'</span></a>');
+                        lots.push('<a href="#" class="list-group-item list-group-item-success">Всего: <span class="badge">'+total_count +'</span></a>');
                         $container.html(lots.join(""));
                         $(".buy_lot").on("click", buy_lot_confirm);
                         $(".info_lot").on("click", info_lot);
@@ -334,12 +334,12 @@
                         var total_amount = 0;
                         for(var i in deals){
                             lots.push("<a href=\"#\" class=\"list-group-item info_investment\" data-id=\"" + deals[i].lot_id + "\">"+deals[i].lot__name+"&nbsp;<span class=\"badge\">"+ deals[i].dcount +
-                                      "</span><button type=\"button\" class=\"btn btn-info\" data-id=\""+deals[i].lot_id+"\" >Info</button></a>");
+                                      "</span><button type=\"button\" class=\"btn btn-info\" data-id=\""+deals[i].lot_id+"\" >Подробнее</button></a>");
                             total_count += deals[i].dcount*1;
                             total_amount += deals[i].lot__amount*deals[i].dcount;
                         }
-                        lots.push('<a href="#" class="list-group-item list-group-item-success">Total amount: <span class="badge">'+ total_amount +'</span></a>');
-                        lots.push('<a href="#" class="list-group-item list-group-item-success">Total count: <span class="badge">' + total_count +'</span></a>');
+                        lots.push('<a href="#" class="list-group-item list-group-item-success">Сумма: <span class="badge">'+ total_amount +'</span></a>');
+                        lots.push('<a href="#" class="list-group-item list-group-item-success">Всего: <span class="badge">' + total_count +'</span></a>');
                         $container.html(lots.join(""));
                         $(".info_investment").on("click", info_investment);
                 },

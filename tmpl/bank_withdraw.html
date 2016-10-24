@@ -8,64 +8,65 @@
             <button type="button" class="close"
                     data-dismiss="modal"
                     aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">Create Withdraw Request</h4>
+            <h4 class="modal-title" id="myModalLabel">Запрос на вывод средств</h4>
           </div>
           <div class="modal-body">
                 <div class="form-group has-error hidden" id="withdraw-error">
-                  <label class="control-label " >Something wrong with your request, please check correctnes</label>
+                  <label class="control-label " >Что-то пошло не так, проверьте введенные данные</label>
+                    Чт
                 </div>
                 <form action="{% url 'create-wirthdraw' %}"
                       method="POST"
                       class="form-horizontal" id="withdraw_form">
                     {% csrf_token %}
                    <div class="form-group">
-                    <label for="bank" class="col-sm-2 control-label">Bank</label>
+                    <label for="bank" class="col-sm-2 control-label">Банк</label>
                     <div class="col-sm-10">
                       <input type="email" class="form-control" id="bank" name="from_bank" placeholder="Bank">
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="bank_account" class="col-sm-2 control-label">Bank Account</label>
+                    <label for="bank_account" class="col-sm-2 control-label">Банковский счет</label>
                     <div class="col-sm-10">
                       <input type="email" class="form-control" id="bank_account" name="from_account" placeholder="Bank Account">
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="name" class="col-sm-2 control-label">Name</label>
+                    <label for="name" class="col-sm-2 control-label">На имя</label>
                     <div class="col-sm-10">
                       <input type="text" class="form-control" id="name" name="name" placeholder="First&Last Name">
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="country" class="col-sm-2 control-label">Country</label>
+                    <label for="country" class="col-sm-2 control-label">Страна</label>
                     <div class="col-sm-10">
                       <input type="text" class="form-control" id="country"
                              name="city" placeholder="Georgia">
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="city" class="col-sm-2 control-label">City</label>
+                    <label for="city" class="col-sm-2 control-label">Город</label>
                     <div class="col-sm-10">
                       <input type="text" class="form-control" id="city"
                              name="city" placeholder="City">
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="address" class="col-sm-2 control-label">Address</label>
+                    <label for="address" class="col-sm-2 control-label">Адрес</label>
                     <div class="col-sm-10">
                       <textarea class="form-control" name="address"
                                 id="address" placeholder="Address"></textarea>
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="amnt" class="col-sm-2 control-label">Amount</label>
+                    <label for="amnt" class="col-sm-2 control-label">Сумма</label>
                     <div class="col-sm-10">
                       <input type="text" class="form-control" id="amnt"
                              name="amnt" placeholder="Amount">
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="currency" class="col-sm-2 control-label">Currency</label>
+                    <label for="currency" class="col-sm-2 control-label">Валюта</label>
                     <div class="col-sm-10">
                         <select type="text" class="form-control"
                                 name="currency" id="currency" >
@@ -76,7 +77,7 @@
                   </div>
                   <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                      <button type="submit" id="withdraw_funds_submit" class="btn btn-success pull-right">Create Request</button>
+                      <button type="submit" id="withdraw_funds_submit" class="btn btn-success pull-right">Отправить</button>
                     </div>
                   </div>
                 </form>
