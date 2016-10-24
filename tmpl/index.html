@@ -36,28 +36,23 @@
       <div class="starter-template">
 
         <div class="col-md-3 pull-left">
-            <h3 class="text-left">Today got:</h3>
-            <p class="text-left"> <span class="glyphicon glyphicon-user">Bogdan</span>, got <strong>100</strong> lari for <strong>7</strong> credits</p>
-            <p class="text-left"> <span class="glyphicon glyphicon-user">Sosedka</span>, got <strong>4 000</strong> lari for <strong>4</strong> credits</p>
-            <p class="text-left"> <span class="glyphicon glyphicon-user">Marina</span>, got <strong>3 153</strong> lari for <strong>9</strong> credits</p>
-            <p class="text-left"> <span class="glyphicon glyphicon-user">Bogdan</span>, got <strong>1 600</strong> lari for <strong>10</strong> credits</p>
-           <p class="text-left"> <span class="glyphicon glyphicon-user">Bogdan</span>, got <strong>1 100</strong> lari for <strong>7</strong> credits</p>
-
+            <h3 class="text-left">Выплаченные доходы:</h3>
+            {% for item in lots%}
+            <p class="text-left"> <span class="glyphicon glyphicon-user">{{item.name}}</span>,
+                    выплачено <strong>{{item.amount}}</strong> {{item.currency}}</p>
+            {% endfor %}
         </div>
         <div class="col-md-3 pull-right">
 
-            <h3 class="text-left">Today buy:</h3>
-            <p class="text-left"> <span class="glyphicon glyphicon-user">Bogdan</span>, buyed <strong>7</strong> credits on amount of <strong>100</strong> lari</p>
-            <p class="text-left"> <span class="glyphicon glyphicon-user">Sosedka</span>, buyed <strong>4</strong> credits on amount of <strong>4 000</strong> lari</p>
-            <p class="text-left"> <span class="glyphicon glyphicon-user">Marina</span>, buyed <strong>9</strong> credits on amount of <strong>3 153</strong> lari</p>
-            <p class="text-left"> <span class="glyphicon glyphicon-user">Bogdan</span>, buyed <strong>10</strong> credits on amount of <strong>1 600</strong> lari</p>
-            <p class="text-left"> <span class="glyphicon glyphicon-user">Bogdan</span>, buyed <strong>7</strong> credits on amount of <strong>1 100</strong> lari</p>
+            <h3 class="text-left">Купили лоты:</h3>
+            {% for item in lots%}
+            <p class="text-left"> <span class="glyphicon glyphicon-user">{{item.name}}</span>,
+                    купил  <strong>{{item.count}}</strong> кредитов на сумму <strong>{{item.amount}}</strong> {{item.currency}}</p>
+            {% endfor %}
         </div>
 
         <div class="col-md-6">
-            <h1>Here you are able to earn money</h1>
-
-
+            <h1>Инвестиционные лоты:</h1>
             <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
         </div>
 
@@ -76,14 +71,14 @@
             plotShadow: false
         },
         title: {
-            text: 'Lot for investments',
+            text: 'Лоты',
             align: 'center',
             verticalAlign: 'middle',
             y: 40
         },
-        tooltip: {
+        /*tooltip: {
             pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-        },
+        },*/
         plotOptions: {
             pie: {
                 dataLabels: {
@@ -102,13 +97,13 @@
         },
         series: [{
             type: 'pie',
-            name: 'Browser share',
+            name: 'USD',
             innerSize: '50%',
             data: [
-                ['Amount of Lots has given',       56.33],
-                ['Amount of Lots free', 24.03],
+                ['Сумма купленных лотов',  {{lots_buyed}} ],
+                ['Сумма лотов на продажу', {{lots_free}} ],
                 {
-                    name: 'Lot for investments',
+                    name: 'Лоты',
                     y: 0.2,
                     dataLabels: {
                         enabled: false

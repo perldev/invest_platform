@@ -31,6 +31,46 @@ MONTH = ["",
 'Dec'
 ]
 
+class CashFlowInfoLot(APIView):
+    
+     def get(self, request, pk, format=None):
+
+        user = request.user
+
+        now = timezone.now()
+        year = now.year
+
+        # adding year objections
+        lot = InvestLot.objects.get(id=pk)
+        q_obj = Q(owner=user) & Q(start_date__year=year) & Q(status="processed")
+        q_obj = InvestDeals.objects.filter(q_obj).order_by("id")
+
+        result = dict([ (MONTH[i], {"invest":0,
+                                    "refund_investments":0,
+                                    "wait_income":0
+                                    })  for i in range(1,13)] )
+        
+        current_month = None
+        current_addit = {}
+        for trans in q_obj:
+            dtime = trans.start_date
+            dtime1 = trans.finish_date
+            result[MONTH[dtime.month]]["invest"] += lot.amount
+            if dtime1.year == year:
+                result[MONTH[dtime1.month]]["refund_investments"] += trans.admount_refund
+                
+        q_obj = Q(owner=user) & Q(start_date__year=year) & Q(status="processing")
+        for trans in InvestDeals.objects.filter(q_obj).order_by("id"):
+            dtime = trans.start_date
+            dtime1 = trans.finish_date
+            result[MONTH[dtime.month]]["invest"] += lot.amount
+            if dtime1.year == year:
+                result[MONTH[dtime1.month]]["wait_income"] += trans.admount_refund
+            continue
+
+        return Response({"lot": {"title": lot.name, "id": lot.id},
+                         "categories": MONTH[1:], "result": result})
+
 
 class CashFlowInfo(APIView):
 

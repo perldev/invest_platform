@@ -5,7 +5,7 @@ from django.shortcuts import render
 
 from django.shortcuts import render
 # Create your views here.
-from .models import buy_lot, ClientProfile, Accounts, Currency, BankTransfers
+from .models import buy_lot, ClientProfile, InvestDeals,  Accounts, Currency, BankTransfers
 from django.conf import settings
 
 from django.shortcuts import render_to_response, get_object_or_404, redirect
@@ -17,6 +17,9 @@ from django.contrib.auth import login, authenticate, logout
 
 from django.contrib.auth.models import User, Group
 from django.contrib.auth.decorators import login_required, permission_required
+from django.db.models import Q, Sum
+from django.utils import timezone
+
 
 from django.forms import ModelForm
 from django import forms
@@ -160,7 +163,27 @@ def msg(request):
 
 
 def index(request):
+    q_obj = InvestDeals.objects.filter(Q(status="created")|Q(status="processing")).values("status").annotate(dsum=Sum("lot__amount")).order_by()
+    di = dict([ (i["status"],i["dsum"]) for i in q_obj])
+    context = {"lots_buyed": di["processing"],
+               "lots_free":di["created"] }
+
+    ub_date__lte=datetime.date.today()
+               
+    deals = InvestDeals.objects.filter(status="processing", ).values("owner__username",
+                                                                   "owner_id").annotate(dcount=Count("owner_id"),
+                                                                                        dsum=Sum("lot__amount")        
+                                                                   ).order_by()
+
+    deals_repay = InvestDeals.objects.filter(status="processed", ).values("owner__username",
+                                                                   "owner_id").annotate(dcount=Count("owner_id"),
+                                                                                        dsum=Sum("lot__amount")
+                                                                   ).order_by()
+                
+               
+    
     return render(request, 'index.html',
+                  context=context,
                   content_type='text/html')
 
 

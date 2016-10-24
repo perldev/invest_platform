@@ -18,7 +18,8 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from django.conf import settings
 from django.views.static import serve
-from api.views import LotsToBuy, MyLots, Balance, BuyLot, MyTrans, MyInvoices, CreateWithdraw, LotInfo, CashFlowInfo
+from api.views import LotsToBuy, MyLots, Balance, BuyLot, MyTrans,\
+    MyInvoices, CreateWithdraw, LotInfo, CashFlowInfo, CashFlowInfoLot
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
@@ -44,6 +45,7 @@ urlpatterns = [
     url(r'^api/lot/([\d]+)$', LotInfo.as_view(), name='lot-info'),
     url(r'^api/lots$', LotsToBuy.as_view(), name='lots-list'),
     url(r'^api/work_flow$', CashFlowInfo.as_view(), name='work_flow'),
+    url(r'^api/work_flow/([\d]+)$', CashFlowInfoLot.as_view(), name='work_flow_lot'),
     url(r'^api/my_lots$', MyLots.as_view(), name='user_lots'),
     url(r'^api/buy_lot/([\d]+)$', BuyLot.as_view(), name='buy_lot'),
     url(r'^api/balance$', Balance.as_view(), name='user_balance'),
