@@ -153,7 +153,7 @@ class CashFlowInfo(APIView):
 
         if "month" in current_addit:
             result_month[current_addit["month"]] = current_addit
-            
+
         return Response({"categories": MONTH[1:], "result": result_month})
 
 
