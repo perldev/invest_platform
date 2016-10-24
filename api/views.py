@@ -95,7 +95,7 @@ class CashFlowInfo(APIView):
         q_obj = Trans.objects.filter((query) & Q(pub_date__year=year)).order_by("id")
         result_month = dict([(MONTH[i], {"invest": 0,
                                          "refund_investments": 0,
-                                         "wait_income": 0
+                                         "wait_income": 0,
                                          "cashin": 0,
                                          "cashout": 0,
                                         }) for i in range(1, 13)])
