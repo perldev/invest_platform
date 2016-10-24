@@ -250,7 +250,7 @@ def process_bank_acc(bank_transfer, user):
     bank_transfer.status = "processed"
     now = timezone.now()
 
-    bank_transfer.processed_pub_date = now()
+    bank_transfer.processed_pub_date = now
 
     bank_transfer.user_accomplished = user
     bank_transfer.save()
