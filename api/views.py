@@ -151,7 +151,9 @@ class CashFlowInfo(APIView):
             current_addit["wait_income"] += trans.admount_refund
             continue
 
-        result_month[current_addit["month"]] = current_addit
+        if "month" in current_addit:
+            result_month[current_addit["month"]] = current_addit
+            
         return Response({"categories": MONTH[1:], "result": result_month})
 
 
