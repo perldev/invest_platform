@@ -42,7 +42,9 @@ class CashFlowInfoLot(APIView):
 
         # adding year objections
         lot = InvestLot.objects.get(id=pk)
-        q_obj = Q(owner=user) & Q(start_date__year=year) & Q(status="processed")
+
+        q_obj = Q(lot=lot) & Q(owner=user) & Q(start_date__year=year) & Q(status="processed")
+
         q_obj = InvestDeals.objects.filter(q_obj).order_by("id")
 
         result = dict([(MONTH[i], {"invest":0,
@@ -59,7 +61,8 @@ class CashFlowInfoLot(APIView):
             if dtime1.year == year:
                 result[MONTH[dtime1.month]]["refund_investments"] += trans.admount_refund
                 
-        q_obj = Q(owner=user) & Q(start_date__year=year) & Q(status="processing")
+        q_obj = Q(lot_id=pk) & Q(owner=user) & Q(start_date__year=year) & Q(status="processing")
+
         for trans in InvestDeals.objects.filter(q_obj).order_by("id"):
             dtime = trans.start_date
             dtime1 = trans.finish_date
