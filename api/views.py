@@ -17,18 +17,18 @@ from django.db.models import Count
 from django.utils import timezone
 
 MONTH = ["",
-'Jan',
-'Feb',
-'Mar',
-'Apr',
-'May',
-'Jun',
-'Jul',
-'Aug',
-'Sep',
-'Oct',
-'Nov',
-'Dec'
+u'Янв',
+u'Фев',
+u'Мрт',
+u'Апр',
+u'Май',
+u'Июн',
+u'Июл',
+u'Авг',
+u'Сен',
+u'Окт',
+u'Ноя',
+u'Дек'
 ]
 
 class CashFlowInfoLot(APIView):
@@ -36,15 +36,11 @@ class CashFlowInfoLot(APIView):
      def get(self, request, pk, format=None):
 
         user = request.user
-
         now = timezone.now()
         year = now.year
-
         # adding year objections
         lot = InvestLot.objects.get(id=pk)
-
         q_obj = Q(lot=lot) & Q(owner=user) & Q(start_date__year=year) & Q(status="processed")
-
         q_obj = InvestDeals.objects.filter(q_obj).order_by("id")
 
         result = dict([(MONTH[i], {"invest":0,
@@ -92,9 +88,7 @@ class CashFlowInfo(APIView):
         now = timezone.now()
         year = now.year
 
-        # adding year objections
-
-
+        # adding year objection
         q_obj = Trans.objects.filter((query) & Q(pub_date__year=year)).order_by("id")
         result_month = dict([(MONTH[i], {"invest": 0,
                                          "refund_investments": 0,
