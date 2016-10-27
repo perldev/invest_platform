@@ -1,0 +1,38 @@
+
+p {
+	font-size: 16px;
+}
+
+.mainTitle {
+	background-color: #1e1e2a;
+	text-align: center;
+
+}
+.mainTitle h1 {
+	color: #fff;
+	padding-top: 70px;
+	font-size: bold;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+.mainTitle span {
+	display: block;
+	padding-bottom: 70px;
+	    color: rgba(255,255,255,0.4);
+	font-size: 18px;
+}
+
+section	{
+	padding-top: 30px;
+}
+.explainText h3 {
+	color: #6464a0;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+.centerCol {
+	text-align: center;
+}
+.imgBox img {
+	margin: 0 auto;
+}
